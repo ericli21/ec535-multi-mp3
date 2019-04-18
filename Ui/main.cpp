@@ -9,6 +9,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QAbstractButton>
+#include "mybutton.h"
 
 //Misc includes
 #include <stdio.h>
@@ -19,6 +20,7 @@
 #include <unistd.h>
 
 //Class for a button
+/*
 class MyButton : public QWidget {
     
  public:
@@ -31,9 +33,9 @@ MyButton::MyButton(QWidget *parent)
   QPushButton *quitBtn = new QPushButton("Play", this);
   quitBtn->setGeometry(50, 40, 75, 30);
 
-  //QObject::connect(quitBtn, &QToolButton::clicked, qApp, &QApplication::quit);
+  QObject::connect(quitBtn, &QAbstractButton::clicked, qApp, &QApplication::quit);
 }
-
+*/
 int main(int argc, char * argv[]){
 
 
@@ -62,8 +64,8 @@ int main(int argc, char * argv[]){
 	//Create a button
 	MyButton window;
 
-  	window.resize(250, 150);  
-  	window.setWindowTitle("Play button test");
+  	//window.resize(250, 150);  
+  	//window.setWindowTitle("Play button test");
   	window.show();
 
 
