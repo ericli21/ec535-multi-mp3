@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'mybutton.h'
+** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Fri Apr 19 11:24:27 2019
+** Created: Fri Apr 19 11:24:23 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "mybutton.h"
+#include "mainwindow.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'mybutton.h' doesn't include <QObject>."
+#error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 61
 #error "This file was generated using the moc from 4.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,56 +17,59 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_MyButton[] = {
+static const uint qt_meta_data_MainWindow[] = {
 
  // content:
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   12, // methods
+       2,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
 
  // slots: signature, parameters, type, tag, flags
-      16,   10,    9,    9, 0x08,
+      18,   12,   11,   11, 0x0a,
+      31,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
-static const char qt_meta_stringdata_MyButton[] = {
-    "MyButton\0\0state\0handleButton(int)\0"
+static const char qt_meta_stringdata_MainWindow[] = {
+    "MainWindow\0\0index\0setPage(int)\0"
+    "goToMenu()\0"
 };
 
-const QMetaObject MyButton::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_MyButton,
-      qt_meta_data_MyButton, 0 }
+const QMetaObject MainWindow::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_MainWindow,
+      qt_meta_data_MainWindow, 0 }
 };
 
-const QMetaObject *MyButton::metaObject() const
+const QMetaObject *MainWindow::metaObject() const
 {
     return &staticMetaObject;
 }
 
-void *MyButton::qt_metacast(const char *_clname)
+void *MainWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_MyButton))
-        return static_cast<void*>(const_cast< MyButton*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_MainWindow))
+        return static_cast<void*>(const_cast< MainWindow*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
-int MyButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: handleButton((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: setPage((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: goToMenu(); break;
         default: ;
         }
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

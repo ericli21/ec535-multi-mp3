@@ -14,7 +14,7 @@ class MyButton : public QWidget
 public:
    explicit MyButton(QWidget *parent = 0);
 private slots:
-   void handleButton();
+   void handleButton(int state);
 private:
    QPushButton *my_button;
 };

@@ -9,7 +9,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QAbstractButton>
-#include "mainwindow.h"
+#include "MainWindow.h"
 
 //Misc includes
 #include <stdio.h>
