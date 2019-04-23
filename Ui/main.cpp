@@ -5,7 +5,6 @@
 #include <QLabel>
 #include <QMainWindow>
 #include <QTextStream>
-#include <QFont>
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QAbstractButton>
