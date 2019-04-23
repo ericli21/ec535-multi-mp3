@@ -1,6 +1,6 @@
 #include <QWidget>
 #include <QPushButton>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +17,7 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	previousButton = new QPushButton("Back", this);
 	
 	state = 0;
-	QVBoxLayout *layout = new QVBoxLayout();
+	QHBoxLayout *layout = new QHBoxLayout();
 	QLabel *message = new QLabel("Play a song    ", this);
 	layout -> addWidget(message);
 	layout -> addWidget(my_Button);
