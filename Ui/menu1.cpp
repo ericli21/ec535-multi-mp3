@@ -16,7 +16,7 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	
 	state = 0;
 	QVBoxLayout *layout = new QVBoxLayout();
-	QLabel *message = new QLabel("Play a song", this);
+	QLabel *message = new QLabel("Play a song    ", this);
 	layout -> addWidget(message);
 	layout -> addWidget(my_Button);
 	layout -> addWidget(backButton);
