@@ -32,15 +32,15 @@ void Menu1::handleButton()
 	// change the text
 	if (state) {
 		my_Button->setText("Play");
-		system("ash speaker_interface.sh pause");
+		system("ash speaker_interface.sh pause &");
 		state = 0;
-		QCoreApplication::processEvents();
+		//QCoreApplication::processEvents();
 	}
 	else {
 		my_Button->setText("Pause");
-		system("ash speaker_interface.sh play");
+		system("ash speaker_interface.sh play &");
 		state = 1;
-		QCoreApplication::processEvents();
+		//QCoreApplication::processEvents();
 	}
 	// resize button
 	//my_button->resize(100,100);
