@@ -11,8 +11,10 @@
 
 Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 {	
-	backButton = new QPushButton("Go Back", this);
-	my_Button = new QPushButton("Pause", this);
+	backButton = new QPushButton("Menu", this);
+	skipButton = new QPushButton("Forward", this);
+	my_Button = new QPushButton("Pause", this);	
+	previousButton = new QPushButton("Back", this);
 	
 	state = 0;
 	QVBoxLayout *layout = new QVBoxLayout();
@@ -24,6 +26,8 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
 	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
+	connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
+	connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));
 }
 
 void Menu1::handleButton()
@@ -43,4 +47,12 @@ void Menu1::handleButton()
 	}
 	// resize button
 	//my_button->resize(100,100);
+}
+
+void Menu1::handlePrevious() {
+
+}
+
+void Menu1::handleSkip() {
+	
 }

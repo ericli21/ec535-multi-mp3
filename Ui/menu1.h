@@ -21,10 +21,14 @@ public:
 	explicit Menu1(MainWindow *parent);	
 public slots:
 	void handleButton();
+	void handleSkip();
+	void handlePrevious();
 private:
 	//QLabel *message;
 	QPushButton *my_Button;
 	QPushButton *backButton;
+	QPushButton *skipButton;
+	QPushButton *previousButton;
 	int state;
 };
 
