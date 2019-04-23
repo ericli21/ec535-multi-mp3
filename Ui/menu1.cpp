@@ -1,7 +1,6 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <QCoreApplication>
 #include <QLabel>
 #include <stdio.h>
 #include <stdlib.h>
