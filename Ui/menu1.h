@@ -2,6 +2,7 @@
 #define MENU1_H
 
 #include <QWidget>
+#include <QCoreApplication>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <stdio.h>

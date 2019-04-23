@@ -1,6 +1,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QCoreApplication>
 #include <QLabel>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,11 +34,13 @@ void Menu1::handleButton()
 		my_Button->setText("Play");
 		system("ash speaker_interface.sh pause");
 		state = 0;
+		QCoreApplication::processEvents();
 	}
 	else {
 		my_Button->setText("Pause");
 		system("ash speaker_interface.sh play");
 		state = 1;
+		QCoreApplication::processEvents();
 	}
 	// resize button
 	//my_button->resize(100,100);
