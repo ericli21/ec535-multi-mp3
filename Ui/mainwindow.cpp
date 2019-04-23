@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	layout -> addWidget(page2);
 	layout -> setCurrentIndex(0);
 	this   -> setLayout(layout);
-	mainMenu -> addButton("test3");
-	mainMenu -> addButton("test4");
+	mainMenu -> addButton("Play a song");
+	mainMenu -> addButton("Select a song");
 }
 
 void MainWindow::setPage(int index)

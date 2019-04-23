@@ -66,6 +66,7 @@ int main(int argc, char * argv[]){
 
 	//Create a menu
 	MainWindow *window = new MainWindow();
+	window -> setWindowState(Qt::WindowFullScreen);
 	
 	
 
