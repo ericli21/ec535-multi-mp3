@@ -31,11 +31,11 @@ void Menu1::handleButton(int state)
 	// change the text
 	if (state) {
 		my_Button->setText("Play");
-		system("./speaker_interface.sh pause");
+		system("ash speaker_interface.sh pause");
 	}
 	else {
 		my_Button->setText("Pause");
-		system("./speaker_interface.sh play");
+		system("ash speaker_interface.sh play");
 	}
 	state = ~state;
 	// resize button
