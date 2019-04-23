@@ -23,21 +23,22 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	setLayout(layout);
 
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
-	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton(state)));
+	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 }
 
-void Menu1::handleButton(int state)
+void Menu1::handleButton()
 {
 	// change the text
 	if (state) {
 		my_Button->setText("Play");
 		system("ash speaker_interface.sh pause");
+		state = 0;
 	}
 	else {
 		my_Button->setText("Pause");
 		system("ash speaker_interface.sh play");
+		state = 1;
 	}
-	state = ~state;
 	// resize button
 	//my_button->resize(100,100);
 }

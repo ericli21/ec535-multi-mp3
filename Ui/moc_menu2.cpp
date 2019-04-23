@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'menu2.h'
 **
-** Created: Tue Apr 23 12:52:38 2019
+** Created: Tue Apr 23 13:01:57 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!

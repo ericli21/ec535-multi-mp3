@@ -20,12 +20,12 @@ class Menu1 : public QWidget
 public:
 	explicit Menu1(MainWindow *parent);	
 public slots:
-	void handleButton(int state);
+	void handleButton();
 private:
 	//QLabel *message;
 	QPushButton *my_Button;
 	QPushButton *backButton;
-	int *state;
+	int state;
 };
 
 #endif
