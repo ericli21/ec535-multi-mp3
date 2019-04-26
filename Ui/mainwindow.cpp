@@ -17,11 +17,11 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	MainMenu *mainMenu = new MainMenu(this);
 	Menu1 *page1 = new Menu1(this);
 	Menu2 *page2 = new Menu2(this);
-	layout -> addWidget(lockMenu);
-	layout -> addWidget(mainMenu);
+	layout -> addWidget(mainMenu);	
 	layout -> addWidget(page1);
 	layout -> addWidget(page2);
-	layout -> setCurrentIndex(0);
+	layout -> addWidget(lockMenu);
+	layout -> setCurrentIndex(3);
 	this   -> setLayout(layout);
 	mainMenu -> addButton("Add song to playlist");
 	mainMenu -> addButton("Select a song");

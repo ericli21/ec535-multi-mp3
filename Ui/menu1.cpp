@@ -26,7 +26,7 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	layout -> addWidget(backButton);
 	setLayout(layout);
 
-	connect(backButton, SIGNAL(released()), parent, SLOT(setpage(1)));
+	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
 	//connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 	//connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
 	//connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));
