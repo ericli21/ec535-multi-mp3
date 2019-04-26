@@ -15,12 +15,15 @@ namespace Ui {
 class LockMenu : public QWidget
 {
 	Q_OBJECT
+signals:
+	void correct();
 public:
 	explicit LockMenu(MainWindow *parent);
 public slots:
-	void authenticate(MainWindow *parent);
+	void auth();
 private:
 	QVBoxLayout *layout;
+	int id;
 };
 
 #endif
