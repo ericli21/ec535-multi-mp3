@@ -14,7 +14,7 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	setLayout(layout);
 	QPushButton *button = new QPushButton("Log in via fingerprint", this);
 	layout -> addWidget(button);
-	connect(button, SIGNAL(released()), this, SLOT(authenticate(parent)));
+	connect(button, SIGNAL(released()), this, SLOT(authenticate(*parent)));
 
 	//nButtons = 0;
 }
