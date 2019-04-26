@@ -14,13 +14,13 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	setLayout(layout);
 	QPushButton *button = new QPushButton("Log in via fingerprint", this);
 	layout -> addWidget(button);
-	connect(button, SIGNAL(released), this, SLOT(authenticate(*parent)));
+	connect(button, SIGNAL(released()), this, SLOT(authenticate(*parent)));
 
 	//nButtons = 0;
 }
 
 void LockMenu::authenticate(MainWindow *window) {
-	int auth = 0;
+	int auth = 1;
 	if (auth == 1) {
 		window -> setPage(1);
 	}
