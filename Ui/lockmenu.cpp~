@@ -20,7 +20,7 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 }
 
 void LockMenu::authenticate(MainWindow *window) {
-	int auth = 1;
+	int auth = 0;
 	if (auth == 1) {
 		window -> setPage(1);
 	}

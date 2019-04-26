@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'lockmenu.h'
 **
-** Created: Fri Apr 26 10:43:03 2019
+** Created: Fri Apr 26 11:07:30 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,16 +23,19 @@ static const uint qt_meta_data_LockMenu[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       1,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
+
+ // slots: signature, parameters, type, tag, flags
+      17,   10,    9,    9, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_LockMenu[] = {
-    "LockMenu\0"
+    "LockMenu\0\0parent\0authenticate(MainWindow*)\0"
 };
 
 const QMetaObject LockMenu::staticMetaObject = {
@@ -58,6 +61,13 @@ int LockMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: authenticate((*reinterpret_cast< MainWindow*(*)>(_a[1]))); break;
+        default: ;
+        }
+        _id -= 1;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE
