@@ -24,5 +24,4 @@ void LockMenu::authenticate(MainWindow *parent) {
 	if (auth == 1) {
 		parent -> setPage(1);
 	}
-	
 }

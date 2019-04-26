@@ -22,6 +22,6 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 void LockMenu::authenticate(MainWindow *parent) {
 	int auth = 1;
 	if (auth == 1) {
-		parent -> setPage(1);
+		parent -> goToMenu();
 	}
 }
