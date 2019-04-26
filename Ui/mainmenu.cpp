@@ -1,7 +1,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QSignalMapper>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QCoreApplication>
 #include <QLabel>
 #include <stdio.h>
@@ -19,7 +19,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	connect(signalMapper, SIGNAL(mapped(int)), parent, SLOT(setPage(int)));
 	
 
-	layout = new QVBoxLayout();
+	layout = new QHBoxLayout();
 	QLabel *message = new QLabel("Main Menu", this);
 	layout -> addWidget(message);
 	layout -> addWidget(previousButton);

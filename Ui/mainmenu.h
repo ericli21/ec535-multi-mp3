@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QSignalMapper>
 #include <QLabel>
 #include <stdio.h>
@@ -27,7 +27,7 @@ public slots:
 	void handleSkip();
 	void handlePrevious();
 private:
-	QVBoxLayout *layout;
+	QHBoxLayout *layout;
 	QSignalMapper *signalMapper;
 	int nButtons;
 	QPushButton *my_Button;
