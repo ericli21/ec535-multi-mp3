@@ -3,23 +3,27 @@
 #include <QStackedLayout>
 
 #include "mainwindow.h"
+#include "lockmenu.h"
 #include "mainmenu.h"
 #include "menu1.h"
 #include "menu2.h"
+
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
 	setWindowTitle("Application");
 	layout = new QStackedLayout();
+	LockMenu *lockMenu = new LockMenu(this);	
 	MainMenu *mainMenu = new MainMenu(this);
 	Menu1 *page1 = new Menu1(this);
 	Menu2 *page2 = new Menu2(this);
+	layout -> addWidget(lockMenu);
 	layout -> addWidget(mainMenu);
 	layout -> addWidget(page1);
 	layout -> addWidget(page2);
 	layout -> setCurrentIndex(0);
 	this   -> setLayout(layout);
-	mainMenu -> addButton("Play a song");
+	mainMenu -> addButton("Add song to playlist");
 	mainMenu -> addButton("Select a song");
 }
 

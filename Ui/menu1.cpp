@@ -18,9 +18,11 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	
 	state = 0;
 	QHBoxLayout *layout = new QHBoxLayout();
-	QLabel *message = new QLabel("Play a song    ", this);
+	QLabel *message = new QLabel("Play a song", this);
 	layout -> addWidget(message);
+	layout -> addWidget(previousButton);
 	layout -> addWidget(my_Button);
+	layout -> addWidget(skipButton);
 	layout -> addWidget(backButton);
 	setLayout(layout);
 

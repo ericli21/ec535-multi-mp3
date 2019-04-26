@@ -5,6 +5,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QSignalMapper>
+#include <QLabel>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstdlib>
 
 #include "mainwindow.h"
 
@@ -19,10 +23,18 @@ public:
 	explicit MainMenu(MainWindow *parent);	
 public slots:
 	void addButton(QString name);
+	void handleButton();
+	void handleSkip();
+	void handlePrevious();
 private:
 	QVBoxLayout *layout;
 	QSignalMapper *signalMapper;
 	int nButtons;
+	QPushButton *my_Button;
+	QPushButton *backButton;
+	QPushButton *skipButton;
+	QPushButton *previousButton;
+	int state;
 };
 
 #endif

@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'menu2.h'
+** Meta object code from reading C++ file 'lockmenu.h'
 **
-** Created: Fri Apr 26 10:34:04 2019
+** Created: Fri Apr 26 10:33:55 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "menu2.h"
+#include "lockmenu.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'menu2.h' doesn't include <QObject>."
+#error "The header file 'lockmenu.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 61
 #error "This file was generated using the moc from 4.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_Menu2[] = {
+static const uint qt_meta_data_LockMenu[] = {
 
  // content:
        2,       // revision
@@ -31,29 +31,29 @@ static const uint qt_meta_data_Menu2[] = {
        0        // eod
 };
 
-static const char qt_meta_stringdata_Menu2[] = {
-    "Menu2\0"
+static const char qt_meta_stringdata_LockMenu[] = {
+    "LockMenu\0"
 };
 
-const QMetaObject Menu2::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_Menu2,
-      qt_meta_data_Menu2, 0 }
+const QMetaObject LockMenu::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_LockMenu,
+      qt_meta_data_LockMenu, 0 }
 };
 
-const QMetaObject *Menu2::metaObject() const
+const QMetaObject *LockMenu::metaObject() const
 {
     return &staticMetaObject;
 }
 
-void *Menu2::qt_metacast(const char *_clname)
+void *LockMenu::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Menu2))
-        return static_cast<void*>(const_cast< Menu2*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_LockMenu))
+        return static_cast<void*>(const_cast< LockMenu*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
-int Menu2::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int LockMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainmenu.h'
 **
-** Created: Tue Apr 23 19:55:11 2019
+** Created: Fri Apr 26 10:33:57 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,19 +23,24 @@ static const uint qt_meta_data_MainMenu[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   12, // methods
+       4,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
 
  // slots: signature, parameters, type, tag, flags
       15,   10,    9,    9, 0x0a,
+      34,    9,    9,    9, 0x0a,
+      49,    9,    9,    9, 0x0a,
+      62,    9,    9,    9, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainMenu[] = {
     "MainMenu\0\0name\0addButton(QString)\0"
+    "handleButton()\0handleSkip()\0"
+    "handlePrevious()\0"
 };
 
 const QMetaObject MainMenu::staticMetaObject = {
@@ -64,9 +69,12 @@ int MainMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: addButton((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: handleButton(); break;
+        case 2: handleSkip(); break;
+        case 3: handlePrevious(); break;
         default: ;
         }
-        _id -= 1;
+        _id -= 4;
     }
     return _id;
 }
