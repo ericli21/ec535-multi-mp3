@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'menu1.h'
 **
-** Created: Sat Apr 27 18:21:55 2019
+** Created: Sat Apr 27 18:48:51 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Menu1[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   12, // methods
+       4,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,14 @@ static const uint qt_meta_data_Menu1[] = {
        7,    6,    6,    6, 0x0a,
       22,    6,    6,    6, 0x0a,
       35,    6,    6,    6, 0x0a,
+      57,   52,    6,    6, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Menu1[] = {
     "Menu1\0\0handleButton()\0handleSkip()\0"
-    "handlePrevious()\0"
+    "handlePrevious()\0song\0slotTest(QListWidgetItem*)\0"
 };
 
 const QMetaObject Menu1::staticMetaObject = {
@@ -69,9 +70,10 @@ int Menu1::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: handleButton(); break;
         case 1: handleSkip(); break;
         case 2: handlePrevious(); break;
+        case 3: slotTest((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

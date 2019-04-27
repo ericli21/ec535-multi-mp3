@@ -40,6 +40,8 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	layout -> addWidget(backButton);
 	setLayout(layout);
 
+
+	connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotTest(QListWidgetItem*)));
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
 	//connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 	//connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
@@ -71,4 +73,8 @@ void Menu1::handlePrevious() {
 
 void Menu1::handleSkip() {
 	
+}
+
+void Menu1::slotTest(QListWidgetItem* song) {
+	std::cout << qPrintable(song->text()) << "\n";
 }
