@@ -21,7 +21,7 @@ class MainMenu : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit MainMenu(MainWindow *parent);	
+	explicit MainMenu(MainWindow *parent);
 public slots:
 	void addButton(QString name);
 	void handleButton();
@@ -37,6 +37,7 @@ private:
 	QPushButton *skipButton;
 	QPushButton *previousButton;
 	int state;
+	int priority;
 };
 
 #endif

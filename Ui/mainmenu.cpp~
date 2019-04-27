@@ -15,14 +15,12 @@
 #include "mainmenu.h"
 
 MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
-	priority = parent->priority;
 	backButton = new QPushButton("Log out", this);
 	skipButton = new QPushButton("Forward", this);
 	my_Button = new QPushButton("Pause", this);	
 	previousButton = new QPushButton("Back", this);
 	signalMapper = new QSignalMapper(this);
 	connect(signalMapper, SIGNAL(mapped(int)), parent, SLOT(setPage(int)));
-	
 
 	//layout = new QHBoxLayout();
 	layout = new QGridLayout();

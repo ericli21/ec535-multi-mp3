@@ -1,6 +1,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QStackedLayout>
+#include <iostream>
 
 #include "mainwindow.h"
 #include "lockmenu.h"
@@ -9,8 +10,16 @@
 #include "menu2.h"
 #include "UART.h"
 
+struct Node
+{
+	std::string songName;
+	int duration;
+	struct Node *next;
+};
+
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
+	head = new Node();
 	priority = 0;
 	setWindowTitle("Application:");
 	layout = new QStackedLayout();
@@ -25,12 +34,20 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	layout -> setCurrentIndex(3);
 	this   -> setLayout(layout);
 	mainMenu -> addButton("Add song to playlist");
-	mainMenu -> addButton("Select a song");
+	mainMenu -> addButton("Add a user");
 }
 
 void MainWindow::setPage(int index)
 {
-	layout -> setCurrentIndex(index);
+	if (index == 1 && priority > 1 && priority < 4) {
+		layout -> setCurrentIndex(index);
+	}
+	else if (index == 2 && priority > 2 && priority < 4) {
+		layout -> setCurrentIndex(index);
+	}
+	else {
+		std::cout << "error: index = " << index << "priority = " << priority << "\n";
+	}
 }
 
 void MainWindow::goToMenu()
@@ -57,4 +74,19 @@ void MainWindow::menuSetPriority3()
 {
 	layout -> setCurrentIndex(0);
 	priority = 3;
+}
+void MainWindow::checkPriority()
+{
+	if (priority == 1) {
+		emit(priority1());
+	}
+	else if (priority == 2) {
+		emit(priority2());
+	}
+	else if (priority == 3) {
+		emit(priority3());
+	}
+	else {
+		//Do nothing (shouldn't get here)
+	}
 }

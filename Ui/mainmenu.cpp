@@ -21,7 +21,6 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	previousButton = new QPushButton("Back", this);
 	signalMapper = new QSignalMapper(this);
 	connect(signalMapper, SIGNAL(mapped(int)), parent, SLOT(setPage(int)));
-	
 
 	//layout = new QHBoxLayout();
 	layout = new QGridLayout();
@@ -38,6 +37,10 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 	connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
 	connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));
+	
+	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
+	//connect(skipButton, SIGNAL (released()), parent SLOT (checkPriority()));
+	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
 
 	nButtons = 0;
 }

@@ -45,11 +45,8 @@ void LockMenu::auth() {
 		else if (level == 2) {
 			emit(correct2());
 		}
-		else if (level == 3) {
+		else {
 			emit(correct3());
-		}
- 		else {
-			//Do nothing (shouldn't get here)
 		}
 	}
 }
