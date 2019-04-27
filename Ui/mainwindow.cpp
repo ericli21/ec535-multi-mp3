@@ -53,12 +53,12 @@ void MainWindow::setPage(int index)
 void MainWindow::goToMenu()
 {
 	layout -> setCurrentIndex(0);
-	priority = 0;
 }
 
 void MainWindow::goToLock()
 {
 	layout -> setCurrentIndex(3);
+	priority = 0;
 }
 void MainWindow::menuSetPriority1()
 {

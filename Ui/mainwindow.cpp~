@@ -15,7 +15,7 @@ struct Node
 	std::string songName;
 	int duration;
 	struct Node *next;
-}
+};
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
@@ -53,7 +53,6 @@ void MainWindow::setPage(int index)
 void MainWindow::goToMenu()
 {
 	layout -> setCurrentIndex(0);
-	priority = 0;
 }
 
 void MainWindow::goToLock()
