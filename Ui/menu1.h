@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QListWidget>
 #include <QDir>
 #include <stdio.h>
@@ -22,17 +23,14 @@ class Menu1 : public QWidget
 public:
 	explicit Menu1(MainWindow *parent);	
 public slots:
-	void handleButton();
-	void handleSkip();
-	void handlePrevious();
 	void slotTest(QListWidgetItem* song);
+	void addSong();
 private:
 	//QLabel *message;
-	QPushButton *my_Button;
+	QPushButton *addButton;
 	QPushButton *backButton;
-	QPushButton *skipButton;
-	QPushButton *previousButton;
 	int state;
+	std::string selected;
 };
 
 #endif
