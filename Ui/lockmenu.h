@@ -16,7 +16,9 @@ class LockMenu : public QWidget
 {
 	Q_OBJECT
 signals:
-	void correct();
+	void correct1();
+	void correct2();
+	void correct3();
 public:
 	explicit LockMenu(MainWindow *parent);
 public slots:

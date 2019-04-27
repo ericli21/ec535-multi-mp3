@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sat Apr 27 16:04:04 2019
+** Created: Sat Apr 27 16:54:39 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   12, // methods
+       6,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,17 @@ static const uint qt_meta_data_MainWindow[] = {
       18,   12,   11,   11, 0x0a,
       31,   11,   11,   11, 0x0a,
       42,   11,   11,   11, 0x0a,
+      53,   11,   11,   11, 0x0a,
+      72,   11,   11,   11, 0x0a,
+      91,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0index\0setPage(int)\0"
-    "goToMenu()\0goToLock()\0"
+    "goToMenu()\0goToLock()\0menuSetPriority1()\0"
+    "menuSetPriority2()\0menuSetPriority3()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -69,9 +73,12 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: setPage((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: goToMenu(); break;
         case 2: goToLock(); break;
+        case 3: menuSetPriority1(); break;
+        case 4: menuSetPriority2(); break;
+        case 5: menuSetPriority3(); break;
         default: ;
         }
-        _id -= 3;
+        _id -= 6;
     }
     return _id;
 }

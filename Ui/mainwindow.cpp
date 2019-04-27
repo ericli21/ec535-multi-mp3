@@ -11,6 +11,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
+	priority = 0;
 	setWindowTitle("Application");
 	layout = new QStackedLayout();
 	LockMenu *lockMenu = new LockMenu(this);	
@@ -35,9 +36,25 @@ void MainWindow::setPage(int index)
 void MainWindow::goToMenu()
 {
 	layout -> setCurrentIndex(0);
+	priority = 0;
 }
 
 void MainWindow::goToLock()
 {
 	layout -> setCurrentIndex(3);
+}
+void MainWindow::menuSetPriority1()
+{
+	layout -> setCurrentIndex(0);
+	priority = 1;
+}
+void MainWindow::menuSetPriority2()
+{
+	layout -> setCurrentIndex(0);
+	priority = 2;
+}
+void MainWindow::menuSetPriority3()
+{
+	layout -> setCurrentIndex(0);
+	priority = 3;
 }

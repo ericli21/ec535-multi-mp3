@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QListWidget>
 #include <QDir>
 #include <stdio.h>

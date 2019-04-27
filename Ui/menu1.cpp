@@ -1,6 +1,6 @@
 #include <QWidget>
 #include <QPushButton>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QListWidget>
 #include <QDir>
 #include <QLabel>
@@ -14,6 +14,13 @@
 
 Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 {	
+	if (parent->priority < 2) {
+		std::cout << "Cannot access\n";
+		return;
+	} else {
+		std::cout << "Accessed\n";
+	}
+		
 	backButton = new QPushButton("Menu", this);
 	//skipButton = new QPushButton("Forward", this);
 	//my_Button = new QPushButton("Pause", this);	
@@ -21,15 +28,19 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	QListWidget *listWidget = new QListWidget(this);
 	
 	//state = 0;
-	QHBoxLayout *layout = new QHBoxLayout();
+	QVBoxLayout *layout = new QVBoxLayout();
 	QDir fdir("/media/card/songs/");
 	QStringList allSongs = fdir.entryList();
 	for (int i = 0; i < allSongs.size(); ++i) {
 		std::cout << qPrintable(allSongs.at(i)) << "\n";
-		listWidget->addItem(qPrintable(allSongs.at(i)));
+		QListWidgetItem *newItem = new QListWidgetItem;
+		newItem->setText(qPrintable(allSongs.at(i)));
+		listWidget->insertItem(i, newItem);
+		//listWidget->addItem(qPrintable(allSongs.at(i)));
 	}
 	QLabel *message = new QLabel("Play a song", this);
 	layout -> addWidget(message);
+	layout -> addWidget(listWidget);
 	//layout -> addWidget(previousButton);
 	//layout -> addWidget(my_Button);
 	//layout -> addWidget(skipButton);

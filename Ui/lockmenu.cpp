@@ -20,7 +20,9 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	QPushButton *button = new QPushButton("Log in via fingerprint", this);
 	layout -> addWidget(button);
 	connect(button, SIGNAL(released()), this, SLOT(auth()));
-	connect(this, SIGNAL(correct()), parent, SLOT(goToMenu()));
+	connect(this, SIGNAL(correct1()), parent, SLOT(menuSetPriority1()));
+	connect(this, SIGNAL(correct2()), parent, SLOT(menuSetPriority2()));
+	connect(this, SIGNAL(correct3()), parent, SLOT(menuSetPriority3()));
 	//nButtons = 0;
 }
 
@@ -39,8 +41,15 @@ void LockMenu::auth() {
 	int num_users = get_user_number(device);
 	printf("Num users: %d\n", num_users);
 
-
-	if (id == 2) {
-		emit(correct());
+	if (level > 0 && level < 4) {
+		if (level == 1) {
+			emit(correct1());
+		}
+		else if (level == 2) {
+			emit(correct2());
+		}
+		else {
+			emit(correct3());
+		}
 	}
 }
