@@ -22,7 +22,7 @@ class Menu1 : public QWidget
 	Q_OBJECT
 public:
 	explicit Menu1(MainWindow *parent);	
-public slots:
+private slots:
 	void slotTest(QListWidgetItem* song);
 	void addSong();
 private:

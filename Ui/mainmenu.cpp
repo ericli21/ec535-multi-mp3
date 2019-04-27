@@ -38,7 +38,11 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
 	connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));
 	
-	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
+	connect(signalMapper, SIGNAL (mapped(int)), parent, SLOT (updateTimeout()));
+	connect(backButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
+	connect(my_Button, SIGNAL (released()), parent, SLOT (updateTimeout()));
+	connect(previousButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
+	connect(skipButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	//connect(skipButton, SIGNAL (released()), parent SLOT (checkPriority()));
 	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
 

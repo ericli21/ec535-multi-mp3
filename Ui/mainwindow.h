@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QStackedLayout>
 #include <iostream>
+#include <QTimer>
 
 struct Node;
 
@@ -30,9 +31,11 @@ public slots:
 	void menuSetPriority2();
 	void menuSetPriority3();
 	void checkPriority();
+	void updateTimeout();
 private:
 	QStackedLayout *layout;
 	Node *head;
+	QTimer *timer;
 };
 
 #endif

@@ -49,6 +49,11 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotTest(QListWidgetItem*)));
 	connect(addButton, SIGNAL(released()), this, SLOT(addSong()));
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
+
+
+	connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), parent, SLOT(updateTimeout()));
+	connect(addButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
+	connect(backButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	//connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 	//connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
 	//connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));

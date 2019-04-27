@@ -2,6 +2,7 @@
 #include <QPushButton>
 #include <QStackedLayout>
 #include <iostream>
+#include <QTimer>
 
 #include "mainwindow.h"
 #include "lockmenu.h"
@@ -35,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	this   -> setLayout(layout);
 	mainMenu -> addButton("Add song to playlist");
 	mainMenu -> addButton("Add a user");
+	timer = new QTimer();
+	timer -> start(10000);
+	connect(timer, SIGNAL(timeout()), this, SLOT(goToLock()));
 }
 
 void MainWindow::setPage(int index)
@@ -89,4 +93,7 @@ void MainWindow::checkPriority()
 	else {
 		//Do nothing (shouldn't get here)
 	}
+}
+void MainWindow::updateTimeout() {
+	timer -> start(10000);
 }

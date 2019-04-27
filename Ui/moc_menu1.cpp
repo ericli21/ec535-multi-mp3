@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'menu1.h'
 **
-** Created: Sat Apr 27 18:59:42 2019
+** Created: Sat Apr 27 19:44:44 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -29,8 +29,8 @@ static const uint qt_meta_data_Menu1[] = {
        0,    0, // constructors
 
  // slots: signature, parameters, type, tag, flags
-      12,    7,    6,    6, 0x0a,
-      39,    6,    6,    6, 0x0a,
+      12,    7,    6,    6, 0x08,
+      39,    6,    6,    6, 0x08,
 
        0        // eod
 };
