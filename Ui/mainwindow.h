@@ -17,6 +17,7 @@ public:
 public slots:
 	void setPage(int index);
 	void goToMenu();
+	void goToLock();
 private:
 	QStackedLayout *layout;
 };

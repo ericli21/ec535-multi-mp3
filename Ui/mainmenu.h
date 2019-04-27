@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QSignalMapper>
+#include <QGridLayout>
 #include <QLabel>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +28,8 @@ public slots:
 	void handleSkip();
 	void handlePrevious();
 private:
-	QHBoxLayout *layout;
+	QGridLayout *layout;
+	//QGridLayout *mainLayout;
 	QSignalMapper *signalMapper;
 	int nButtons;
 	QPushButton *my_Button;

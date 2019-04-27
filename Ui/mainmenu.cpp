@@ -3,10 +3,13 @@
 #include <QSignalMapper>
 #include <QHBoxLayout>
 #include <QCoreApplication>
+#include <QGridLayout>
 #include <QLabel>
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdlib>
+#include <sstream>
+#include <string>
 
 #include "mainmenu.h"
 
@@ -19,17 +22,19 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	connect(signalMapper, SIGNAL(mapped(int)), parent, SLOT(setPage(int)));
 	
 
-	layout = new QHBoxLayout();
+	//layout = new QHBoxLayout();
+	layout = new QGridLayout();
+	
 	QLabel *message = new QLabel("Main Menu", this);
-	layout -> addWidget(message);
-	layout -> addWidget(previousButton);
-	layout -> addWidget(my_Button);
-	layout -> addWidget(skipButton);
-	layout -> addWidget(backButton);
+	layout -> addWidget(message, 0, 0, 1, 1);
+	layout -> addWidget(previousButton, 3, 0, 1, 1);
+	layout -> addWidget(my_Button, 3, 1, 1, 1);
+	layout -> addWidget(skipButton, 3, 2, 1, 1);
+	layout -> addWidget(backButton, 1, 0, 1, 1);
 
 	setLayout(layout);
 
-	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
+	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
 	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 	connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
 	connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));
@@ -40,7 +45,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 void MainMenu::addButton(QString name) {
 	nButtons += 1;
 	QPushButton *button = new QPushButton(name, this);
-	layout -> addWidget(button);
+	layout -> addWidget(button, 2, nButtons - 1, 1, 1);
 	signalMapper -> setMapping(button, nButtons);
 	connect(button, SIGNAL(released()), signalMapper, SLOT(map()));
 }
@@ -65,9 +70,21 @@ void MainMenu::handleButton()
 }
 
 void MainMenu::handlePrevious() {
-
+	std::string nextSong = "blank";
+	std::string line = "ash speaker_interface.sh next ";
+	line += nextSong;
+	line += " &";
+	//line <<  "ash speaker_interface.sh next " << nextSong << " &"; 
+			
+	system(line.c_str());
 }
 
 void MainMenu::handleSkip() {
-	
+	std::string previousSong = "blank1";
+	std::string line = "ash speaker_interface.sh next ";
+	line += previousSong;
+	line += " &";
+	//line <<  "ash speaker_interface.sh next " << previousSong << " &"; 
+			
+	system(line.c_str());
 }

@@ -7,7 +7,7 @@
 #include "mainmenu.h"
 #include "menu1.h"
 #include "menu2.h"
-
+#include "UART.h"
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
@@ -35,4 +35,9 @@ void MainWindow::setPage(int index)
 void MainWindow::goToMenu()
 {
 	layout -> setCurrentIndex(0);
+}
+
+void MainWindow::goToLock()
+{
+	layout -> setCurrentIndex(3);
 }

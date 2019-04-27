@@ -1,10 +1,13 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QListWidget>
+#include <QDir>
 #include <QLabel>
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdlib>
+#include <iostream>
 	
 #include "menu1.h"
 #include "mainwindow.h"
@@ -15,9 +18,16 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	//skipButton = new QPushButton("Forward", this);
 	//my_Button = new QPushButton("Pause", this);	
 	//previousButton = new QPushButton("Back", this);
+	QListWidget *listWidget = new QListWidget(this);
 	
 	//state = 0;
 	QHBoxLayout *layout = new QHBoxLayout();
+	QDir fdir("/media/card/songs/");
+	QStringList allSongs = fdir.entryList();
+	for (int i = 0; i < allSongs.size(); ++i) {
+		std::cout << qPrintable(allSongs.at(i)) << "\n";
+		listWidget->addItem(qPrintable(allSongs.at(i)));
+	}
 	QLabel *message = new QLabel("Play a song", this);
 	layout -> addWidget(message);
 	//layout -> addWidget(previousButton);

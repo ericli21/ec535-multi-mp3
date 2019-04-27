@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QListWidget>
+#include <QDir>
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdlib>

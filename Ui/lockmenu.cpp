@@ -5,7 +5,12 @@
 #include <QCoreApplication>
 
 #include "lockmenu.h"
+extern "C" {
+  #include "UART.h" //a C header, so wrap it in extern "C" 
+}
 
+
+//Authenticate user menu screen
 LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	//signalMapper = new QSignalMapper(this);
 	//connect(signalMapper, SIGNAL(mapped(int)), parent, SLOT(setPage(int)));
@@ -20,7 +25,21 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 }
 
 void LockMenu::auth() {
+
 	id++;
+	int device = scanner_open();
+	//delete_user(device, 0);
+	//add_fingerprint(device, 15, 0x02, 0);
+	int level = authenticate_user(device, 0);
+	printf("Level: %d\n", level);
+	sleep(3);
+	int level2 = authenticate_user(device, 0);
+	printf("Level2: %d\n", level2);
+
+	int num_users = get_user_number(device);
+	printf("Num users: %d\n", num_users);
+
+
 	if (id == 2) {
 		emit(correct());
 	}
