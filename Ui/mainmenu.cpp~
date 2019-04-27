@@ -15,6 +15,7 @@
 #include "mainmenu.h"
 
 MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
+	priority = parent->priority;
 	backButton = new QPushButton("Log out", this);
 	skipButton = new QPushButton("Forward", this);
 	my_Button = new QPushButton("Pause", this);	
@@ -34,7 +35,6 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	layout -> addWidget(backButton, 1, 0, 1, 1);
 
 	setLayout(layout);
-	
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
 	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
 	connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));

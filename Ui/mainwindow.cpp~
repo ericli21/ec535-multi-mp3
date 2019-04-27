@@ -12,7 +12,7 @@
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
 	priority = 0;
-	setWindowTitle("Application:");
+	setWindowTitle("Application");
 	layout = new QStackedLayout();
 	LockMenu *lockMenu = new LockMenu(this);	
 	MainMenu *mainMenu = new MainMenu(this);
