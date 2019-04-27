@@ -30,7 +30,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	layout -> addWidget(previousButton, 0, 0, 1, 1);
 	layout -> addWidget(my_Button, 0, 1, 1, 1);
 	layout -> addWidget(skipButton, 0, 2, 1, 1);
-	layout -> addWidget(backButton, 3, 0, 1, 3);
+	layout -> addWidget(backButton, 3, 0, 1, 1);
 
 	setLayout(layout);
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
