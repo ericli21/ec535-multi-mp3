@@ -95,5 +95,5 @@ void MainWindow::checkPriority()
 	}
 }
 void MainWindow::updateTimeout() {
-	timer -> setInterval(10000);
+	timer -> remainingTime() = 10000;
 }

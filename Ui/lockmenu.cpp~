@@ -23,11 +23,6 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	connect(this, SIGNAL(correct1()), parent, SLOT(menuSetPriority1()));
 	connect(this, SIGNAL(correct2()), parent, SLOT(menuSetPriority2()));
 	connect(this, SIGNAL(correct3()), parent, SLOT(menuSetPriority3()));
-
-	connect(this, SIGNAL(correct1()), parent, SLOT(updateTimeout()));
-	connect(this, SIGNAL(correct2()), parent, SLOT(updateTimeout()));
-	connect(this, SIGNAL(correct3()), parent, SLOT(updateTimeout()));
-	
 	//nButtons = 0;
 }
 
