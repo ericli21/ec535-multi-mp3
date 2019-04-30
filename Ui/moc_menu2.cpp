@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'menu2.h'
 **
-** Created: Sat Apr 27 19:44:45 2019
+** Created: Tue Apr 30 09:44:05 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,19 +23,20 @@ static const uint qt_meta_data_Menu2[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   12, // methods
+       2,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
 
  // slots: signature, parameters, type, tag, flags
        7,    6,    6,    6, 0x08,
+      18,    6,    6,    6, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Menu2[] = {
-    "Menu2\0\0addUser()\0"
+    "Menu2\0\0addUser1()\0addUser2()\0"
 };
 
 const QMetaObject Menu2::staticMetaObject = {
@@ -63,10 +64,11 @@ int Menu2::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: addUser(); break;
+        case 0: addUser1(); break;
+        case 1: addUser2(); break;
         default: ;
         }
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

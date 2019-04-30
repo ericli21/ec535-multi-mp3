@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sat Apr 27 19:44:43 2019
+** Created: Tue Apr 30 09:44:02 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   12, // methods
+      18,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -42,6 +42,13 @@ static const uint qt_meta_data_MainWindow[] = {
      127,   11,   11,   11, 0x0a,
      146,   11,   11,   11, 0x0a,
      162,   11,   11,   11, 0x0a,
+     187,  178,   11,   11, 0x0a,
+     215,  209,   11,   11, 0x0a,
+     229,  209,   11,   11, 0x0a,
+     244,   11,   11,   11, 0x0a,
+     255,   11,   11,   11, 0x0a,
+     269,   11,   11,   11, 0x0a,
+     282,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -52,6 +59,9 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "goToMenu()\0goToLock()\0menuSetPriority1()\0"
     "menuSetPriority2()\0menuSetPriority3()\0"
     "checkPriority()\0updateTimeout()\0"
+    "songName\0pushSong(std::string)\0state\0"
+    "playSong(int)\0pauseSong(int)\0backSong()\0"
+    "forwardSong()\0transition()\0tick()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -90,9 +100,16 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 8: menuSetPriority3(); break;
         case 9: checkPriority(); break;
         case 10: updateTimeout(); break;
+        case 11: pushSong((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 12: playSong((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: pauseSong((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: backSong(); break;
+        case 15: forwardSong(); break;
+        case 16: transition(); break;
+        case 17: tick(); break;
         default: ;
         }
-        _id -= 11;
+        _id -= 18;
     }
     return _id;
 }

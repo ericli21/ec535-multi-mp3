@@ -12,9 +12,13 @@
 #include <string>
 #include <iostream>
 
+
+
 #include "mainmenu.h"
 
 MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
+	std::cout << "Test7\n";
+	state = 0;
 	backButton = new QPushButton("Log out", this);
 	skipButton = new QPushButton("Forward", this);
 	my_Button = new QPushButton("Pause", this);	
@@ -24,25 +28,28 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 
 	//layout = new QHBoxLayout();
 	layout = new QGridLayout();
-	
+	std::cout << "Test8\n";
 	QLabel *message = new QLabel("Main Menu", this);
 	layout -> addWidget(message, 1, 0, 1, 1);
 	layout -> addWidget(previousButton, 0, 0, 1, 1);
 	layout -> addWidget(my_Button, 0, 1, 1, 1);
 	layout -> addWidget(skipButton, 0, 2, 1, 1);
 	layout -> addWidget(backButton, 3, 0, 1, 3);
-
+	std::cout << "Test9\n";
 	setLayout(layout);
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
 	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
-	connect(previousButton, SIGNAL (released()), this, SLOT (handlePrevious()));
-	connect(skipButton, SIGNAL (released()), this, SLOT (handleSkip()));
-	
+	connect(previousButton, SIGNAL (released()), parent, SLOT (backSong()));
+	connect(skipButton, SIGNAL (released()), parent, SLOT (forwardSong()));
+	std::cout << "Test10\n";
 	connect(signalMapper, SIGNAL (mapped(int)), parent, SLOT (updateTimeout()));
 	connect(backButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	connect(my_Button, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	connect(previousButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	connect(skipButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
+
+	connect(this, SIGNAL (play_to_pause(int)), parent, SLOT(pauseSong(int)));
+	connect(this, SIGNAL (pause_to_play(int)), parent, SLOT(playSong(int)));
 	//connect(skipButton, SIGNAL (released()), parent SLOT (checkPriority()));
 	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
 
@@ -61,15 +68,20 @@ void MainMenu::handleButton()
 {
 	// change the text
 	if (state) {
-		my_Button->setText("Play");
-		system("ash speaker_interface.sh pause &");
+		
+		//system("ash speaker_interface.sh pause &");
+		emit play_to_pause(state);
+
 		state = 0;
+		my_Button->setText("Play");
 		//QCoreApplication::processEvents();
 	}
 	else {
-		my_Button->setText("Pause");
-		system("ash speaker_interface.sh play &");
+		//system("ash speaker_interface.sh play &");
+		emit pause_to_play(state);
+	
 		state = 1;
+		my_Button->setText("Pause");
 		//QCoreApplication::processEvents();
 	}
 	// resize button

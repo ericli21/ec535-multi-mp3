@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QListWidget>
+#include <QSignalMapper>
 #include <QDir>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,11 +21,13 @@ namespace Ui {
 class Menu1 : public QWidget
 {
 	Q_OBJECT
+signals:
+	void addSong(std::string);
 public:
 	explicit Menu1(MainWindow *parent);	
 private slots:
 	void slotTest(QListWidgetItem* song);
-	void addSong();
+	void confirmSong();
 private:
 	//QLabel *message;
 	QPushButton *addButton;

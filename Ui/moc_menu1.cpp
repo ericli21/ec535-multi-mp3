@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'menu1.h'
 **
-** Created: Sat Apr 27 19:44:44 2019
+** Created: Tue Apr 30 09:44:04 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,21 +23,24 @@ static const uint qt_meta_data_Menu1[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   12, // methods
+       3,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
 
+ // signals: signature, parameters, type, tag, flags
+       7,    6,    6,    6, 0x05,
+
  // slots: signature, parameters, type, tag, flags
-      12,    7,    6,    6, 0x08,
-      39,    6,    6,    6, 0x08,
+      33,   28,    6,    6, 0x08,
+      60,    6,    6,    6, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Menu1[] = {
-    "Menu1\0\0song\0slotTest(QListWidgetItem*)\0"
-    "addSong()\0"
+    "Menu1\0\0addSong(std::string)\0song\0"
+    "slotTest(QListWidgetItem*)\0confirmSong()\0"
 };
 
 const QMetaObject Menu1::staticMetaObject = {
@@ -65,12 +68,20 @@ int Menu1::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: slotTest((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 1: addSong(); break;
+        case 0: addSong((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 1: slotTest((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 2: confirmSong(); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
+}
+
+// SIGNAL 0
+void Menu1::addSong(std::string _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

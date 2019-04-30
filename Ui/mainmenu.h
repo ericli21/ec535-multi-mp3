@@ -20,6 +20,9 @@ namespace Ui {
 class MainMenu : public QWidget
 {
 	Q_OBJECT
+signals:
+	void play_to_pause(int);
+	void pause_to_play(int);
 public:
 	explicit MainMenu(MainWindow *parent);
 public slots:

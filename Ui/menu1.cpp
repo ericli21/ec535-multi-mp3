@@ -3,6 +3,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QListWidget>
+#include <QSignalMapper>
 #include <QDir>
 #include <QLabel>
 #include <stdio.h>
@@ -15,6 +16,7 @@
 
 Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 {	
+	std::cout << "Test11\n";
 	addButton = new QPushButton("Add a song", this);
 	backButton = new QPushButton("Menu", this);
 	//skipButton = new QPushButton("Forward", this);
@@ -23,6 +25,7 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	QListWidget *listWidget = new QListWidget(this);
 	
 	//state = 0;
+	std::cout << "Test12\n";
 	QVBoxLayout *layout = new QVBoxLayout();
 	QHBoxLayout *layout2 = new QHBoxLayout();
 	QDir fdir("/media/card/songs/");
@@ -34,6 +37,7 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 		listWidget->insertItem(i, newItem);
 		//listWidget->addItem(qPrintable(allSongs.at(i)));
 	}
+	std::cout << "Test13\n";
 	QLabel *message = new QLabel("Play a song", this);
 	layout -> addWidget(message);
 	layout -> addWidget(listWidget);
@@ -41,16 +45,24 @@ Menu1::Menu1(MainWindow *parent) : QWidget(parent)
 	//layout -> addWidget(previousButton);
 	//layout -> addWidget(my_Button);
 	//layout -> addWidget(skipButton);
+	std::cout << "Test14\n";
 	layout2 -> addWidget(addButton);
 	layout2 -> addWidget(backButton);
 	layout -> addLayout(layout2);
 	setLayout(layout);
-
+	//QSignalMapper* signalMapper = new QSignalMapper (this) ;
+	std::cout << "Test15\n";
 	connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(slotTest(QListWidgetItem*)));
-	connect(addButton, SIGNAL(released()), this, SLOT(addSong()));
+	//connect(addButton, SIGNAL(released()), this, SLOT(addSong()));
+	//connect(addButton, SIGNAL(released()), signalMapper, SLOT(map()));
+	std::cout << "Test16\n";
+	//signalMapper -> setMapping (addButton, QString::fromStdString(selected));
+	//connect(signalMapper, SIGNAL(mapped(const QString &)), parent, SLOT(pushSong(const QString &)));
+	connect(addButton, SIGNAL(released()), this, SLOT(confirmSong()));
+	connect(this, SIGNAL(addSong(std::string)), parent, SLOT(pushSong(std::string)));
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToMenu()));
 
-
+	std::cout << "Test17\n";
 	connect(listWidget, SIGNAL(itemClicked(QListWidgetItem*)), parent, SLOT(updateTimeout()));
 	connect(addButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	connect(backButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
@@ -65,6 +77,7 @@ void Menu1::slotTest(QListWidgetItem* song) {
 //	std::cout << qPrintable(song->text()) << "\n";
 }
 
-void Menu1::addSong() {
+void Menu1::confirmSong() {
 	std::cout << selected << "added to queue.\n";
+	emit addSong(selected);
 }

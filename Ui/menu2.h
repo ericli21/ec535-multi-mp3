@@ -18,11 +18,13 @@ class Menu2 : public QWidget
 public:
 	explicit Menu2(MainWindow *parent);
 private slots:
-	void addUser();	
+	void addUser1();
+	void addUser2();	
 private:
 	int id_count;
 	//QLabel *message;
-	QPushButton *userButton;
+	QPushButton *user1Button;
+	QPushButton *user2Button;
 	QPushButton *backButton;
 };
 
