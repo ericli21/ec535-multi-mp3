@@ -82,7 +82,7 @@ signals:
 	void priority1();
 	void priority2();
 	void priority3();
-	void changeSongName(std::string);
+	void changeSongName(std::string,std::string,std::string);
 	void notZero();
 	void hasPrev();
 	void hasNext();

@@ -30,11 +30,15 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	layout = new QGridLayout();
 	std::cout << "Test8\n";
 	current_song = new QLabel("No song playing currently", this);
+	current_artist = new QLabel(" ", this);
+	current_album = new QLabel(" ", this);
 	layout -> addWidget(current_song, 1, 0, 1, 1);
+	layout -> addWidget(current_artist, 2, 0, 1, 1);
+	layout -> addWidget(current_album, 3, 0, 1, 1);
 	layout -> addWidget(previousButton, 0, 0, 1, 1);
 	layout -> addWidget(my_Button, 0, 1, 1, 1);
 	layout -> addWidget(skipButton, 0, 2, 1, 1);
-	layout -> addWidget(backButton, 3, 0, 1, 3);
+	layout -> addWidget(backButton, 4, 0, 1, 3);
 	std::cout << "Test9\n";
 	setLayout(layout);
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
@@ -62,7 +66,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	//connect(skipButton, SIGNAL (released()), parent SLOT (checkPriority()));
 	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
 
-	connect(parent, SIGNAL(changeSongName(std::string)), this, SLOT(updateName(std::string)));
+	connect(parent, SIGNAL(changeSongName(std::string,std::string,std::string)), this, SLOT(updateName(std::string,std::string,std::string)));
 
 	//connect(parent, SIGNAL(noSong()), this, SLOT(correctState()));
 
@@ -127,8 +131,10 @@ void MainMenu::handleSkip() {
 	//system(line.c_str());
 }
 
-void MainMenu::updateName(std::string songName) {
+void MainMenu::updateName(std::string songName, std::string artistName, std::string albumName) {
 	current_song->setText(QString::fromStdString(songName));
+	current_artist->setText(QString::fromStdString(artistName));
+	current_album->setText(QString::fromStdString(albumName));
 }
 
 //void MainMenu::correctState() {

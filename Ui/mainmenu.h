@@ -32,7 +32,7 @@ public slots:
 	void handleButton();
 	void handleSkip();
 	void handlePrevious();
-	void updateName(std::string songName);
+	void updateName(std::string songName, std::string artistName, std::string albumName);
 	//void correctState();
 private:
 	QGridLayout *layout;
@@ -46,6 +46,8 @@ private:
 	int state;
 	int priority;
 	QLabel *current_song;
+	QLabel *current_artist;
+	QLabel *current_album;
 };
 
 #endif

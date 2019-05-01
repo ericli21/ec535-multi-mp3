@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainmenu.h'
 **
-** Created: Wed May 1 18:33:01 2019
+** Created: Wed May 1 18:47:08 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -39,7 +39,7 @@ static const uint qt_meta_data_MainMenu[] = {
       95,    9,    9,    9, 0x0a,
      110,    9,    9,    9, 0x0a,
      123,    9,    9,    9, 0x0a,
-     149,  140,    9,    9, 0x0a,
+     170,  140,    9,    9, 0x0a,
 
        0        // eod
 };
@@ -48,8 +48,9 @@ static const char qt_meta_stringdata_MainMenu[] = {
     "MainMenu\0\0play_to_pause(int)\0"
     "pause_to_play(int)\0backSig()\0forwardSig()\0"
     "name\0addButton(QString)\0handleButton()\0"
-    "handleSkip()\0handlePrevious()\0songName\0"
-    "updateName(std::string)\0"
+    "handleSkip()\0handlePrevious()\0"
+    "songName,artistName,albumName\0"
+    "updateName(std::string,std::string,std::string)\0"
 };
 
 const QMetaObject MainMenu::staticMetaObject = {
@@ -85,7 +86,7 @@ int MainMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 5: handleButton(); break;
         case 6: handleSkip(); break;
         case 7: handlePrevious(); break;
-        case 8: updateName((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 8: updateName((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::string(*)>(_a[2])),(*reinterpret_cast< std::string(*)>(_a[3]))); break;
         default: ;
         }
         _id -= 9;
