@@ -17,12 +17,15 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <cstdlib>
 
 //Class for a button
 
 int main(int argc, char * argv[]){
 
-
+	system("rm temp.txt");
+	system("touch temp.txt");
+	
 	//Start QApplication
 	QApplication app(argc, argv);
 

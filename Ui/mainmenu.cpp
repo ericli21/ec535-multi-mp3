@@ -38,7 +38,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	layout -> addWidget(previousButton, 0, 0, 1, 1);
 	layout -> addWidget(my_Button, 0, 1, 1, 1);
 	layout -> addWidget(skipButton, 0, 2, 1, 1);
-	layout -> addWidget(backButton, 4, 0, 1, 3);
+	layout -> addWidget(backButton, 5, 0, 1, 3);
 	std::cout << "Test9\n";
 	setLayout(layout);
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
@@ -76,7 +76,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 void MainMenu::addButton(QString name) {
 	nButtons += 1;
 	QPushButton *button = new QPushButton(name, this);
-	layout -> addWidget(button, 2, nButtons - 1, 1, 1);
+	layout -> addWidget(button, 4, nButtons - 1, 1, 1);
 	signalMapper -> setMapping(button, nButtons);
 	connect(button, SIGNAL(released()), signalMapper, SLOT(map()));
 }

@@ -69,6 +69,11 @@ void Menu1::slotTest(QListWidgetItem* song) {
 }
 
 void Menu1::confirmSong() {
-	std::cout << selected << "added to queue.\n";
-	emit addSong(selected);
+	if (!selected.empty()) {
+		std::cout << selected << "added to queue.\n";
+		emit addSong(selected);
+	}
+	else {
+		std::cout << "please touch a song (don't drag your finger)\n";
+	}
 }
