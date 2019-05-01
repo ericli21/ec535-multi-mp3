@@ -47,8 +47,8 @@ void LockMenu::auth() {
 	int device = scanner_open();
 	//delete_user(device, 0);
 	//add_fingerprint(device, 15, 0x02, 0);
-	unsigned int level = authenticate_user(device, 0);
-	printf("Level: %u\n", level);
+	int level = authenticate_user(device, 0);
+	printf("Level: %d\n", level);
 
 	int num_users = get_user_number(device);
 	printf("Num users: %d\n", num_users);
