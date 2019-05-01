@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'lockmenu.h'
 **
-** Created: Wed May 1 18:59:17 2019
+** Created: Wed May 1 19:05:54 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -35,15 +35,15 @@ static const uint qt_meta_data_LockMenu[] = {
 
  // slots: signature, parameters, type, tag, flags
       43,    9,    9,    9, 0x0a,
-      59,   50,    9,    9, 0x0a,
+      80,   50,    9,    9, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_LockMenu[] = {
     "LockMenu\0\0correct1()\0correct2()\0"
-    "correct3()\0auth()\0songName\0"
-    "updateName(std::string)\0"
+    "correct3()\0auth()\0songName,artistName,albumName\0"
+    "updateName(std::string,std::string,std::string)\0"
 };
 
 const QMetaObject LockMenu::staticMetaObject = {
@@ -75,7 +75,7 @@ int LockMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 1: correct2(); break;
         case 2: correct3(); break;
         case 3: auth(); break;
-        case 4: updateName((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 4: updateName((*reinterpret_cast< std::string(*)>(_a[1])),(*reinterpret_cast< std::string(*)>(_a[2])),(*reinterpret_cast< std::string(*)>(_a[3]))); break;
         default: ;
         }
         _id -= 5;

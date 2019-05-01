@@ -24,11 +24,13 @@ public:
 	explicit LockMenu(MainWindow *parent);
 public slots:
 	void auth();
-	void updateName(std::string songName);
+	void updateName(std::string songName,std::string artistName, std::string albumName);
 private:
 	QVBoxLayout *layout;
 	int id;
 	QLabel *current_song;
+	QLabel *current_artist;
+	QLabel *current_album;
 };
 
 #endif

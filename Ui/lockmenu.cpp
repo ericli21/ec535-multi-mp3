@@ -19,8 +19,12 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	layout = new QVBoxLayout();
 	setLayout(layout);
 	current_song = new QLabel("No song playing currently", this);
+	current_artist = new QLabel(" ", this);
+	current_album = new QLabel(" ", this);
 	QPushButton *button = new QPushButton("Log in via fingerprint", this);
 	layout -> addWidget(current_song);
+	layout -> addWidget(current_artist);
+	layout -> addWidget(current_album);
 	layout -> addWidget(button);
 	connect(button, SIGNAL(released()), this, SLOT(auth()));
 	connect(this, SIGNAL(correct1()), parent, SLOT(menuSetPriority1()));
@@ -32,7 +36,7 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	connect(this, SIGNAL(correct3()), parent, SLOT(updateTimeout()));
 
 
-	connect(parent, SIGNAL(changeSongName(std::string)), this, SLOT(updateName(std::string)));
+	connect(parent, SIGNAL(changeSongName(std::string,std::string,std::string)), this, SLOT(updateName(std::string,std::string,std::string)));
 	
 	//nButtons = 0;
 }
@@ -65,6 +69,8 @@ void LockMenu::auth() {
 	}
 }
 
-void LockMenu::updateName(std::string songName) {
+void LockMenu::updateName(std::string songName, std::string artistName, std::string albumName) {
 	current_song->setText(QString::fromStdString(songName));
+	current_artist->setText(QString::fromStdString(artistName));
+	current_album->setText(QString::fromStdString(albumName));
 }
