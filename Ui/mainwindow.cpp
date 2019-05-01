@@ -183,7 +183,7 @@ void MainWindow::playSong(int state) {
 			current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
 			std::cout << current_interval << "= current interval\n";
 
-			//emit changeSongName(current_song_node->info->song_title);
+			emit changeSongName(current_song_node->info->song_title);
 
 			songTimer -> setInterval(current_interval);
 			//songTimer -> start(current_interval);
@@ -202,7 +202,7 @@ void MainWindow::playSong(int state) {
 			std::cout << "play button activate: " << command << "\n";
 			system(command2);
 
-			//emit changeSongName(current_song_node->info->song_title);
+			emit changeSongName(current_song_node->info->song_title);
 
 			current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
 			std::cout << current_interval << "= current interval\n";
@@ -259,7 +259,7 @@ void MainWindow::forwardSong() {
 
 		system(command2);
 		
-		//emit changeSongName(current_song_node->info->song_title);
+		emit changeSongName(current_song_node->info->song_title);
 
 		//songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
 		songTimer -> start(current_interval);
@@ -290,7 +290,7 @@ void MainWindow::backSong() {
 
 		system(command2);
 		
-		//emit changeSongName(current_song_node->info->song_title);
+		emit changeSongName(current_song_node->info->song_title);
 
 		//songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
 		songTimer -> start(current_interval);
@@ -315,7 +315,7 @@ void MainWindow::transition() {
 
 		system(command2);
 				
-		//emit changeSongName(current_song_node->info->song_title);
+		emit changeSongName(current_song_node->info->song_title);
 		
 		//songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
 		songTimer -> start(current_interval);	
