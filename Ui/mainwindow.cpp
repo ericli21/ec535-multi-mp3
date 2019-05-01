@@ -82,16 +82,21 @@ void MainWindow::setPage(int index)
 	}
 }
 
+
+//Go back to menu (page 0)
 void MainWindow::goToMenu()
 {
 	layout -> setCurrentIndex(0);
 }
 
+//Go back to the lockscreen (page 3)
 void MainWindow::goToLock()
 {
 	layout -> setCurrentIndex(3);
 	priority = 0;
 }
+
+//After registering, set the current priority
 void MainWindow::menuSetPriority1()
 {
 	layout -> setCurrentIndex(0);

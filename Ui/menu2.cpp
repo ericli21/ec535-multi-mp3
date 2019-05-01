@@ -3,6 +3,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <iostream>
 	
 #include "menu2.h"
 #include "mainwindow.h"
@@ -12,8 +13,6 @@ extern "C" {
 
 Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 {	
-	//Amount of users (excluding admin) starts out as 0
-	id_count = 0;
 
 	//Initialize buttons to be used, as well as the message and layout
 	user1Button = new QPushButton("Priority 1", this);
@@ -46,14 +45,19 @@ Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 
 //Add a user with priority 1, increment number of users afterwards
 void Menu2::addUser1() {
-	id_count++;
+	//id_count++;
 	int device = scanner_open();
-	add_fingerprint(device, id_count, 0x01, 0);
+	int id_count = get_user_number(device);
+	add_fingerprint(device, id_count + 1, 0x01, 0);
+	std::cout << "Added user" << id_count + 1 << "\n";
+	
 }
 
 //Add a user with priority 2, increment number of users afterwards
 void Menu2::addUser2() {
-	id_count++;
+	//id_count++;
 	int device = scanner_open();
-	add_fingerprint(device, id_count, 0x02, 0);
+	int id_count = get_user_number(device);
+	add_fingerprint(device, id_count + 1, 0x02, 0);
+	std::cout << "Added user" << id_count + 1 << "\n";
 }
