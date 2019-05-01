@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue Apr 30 09:44:02 2019
+** Created: Wed May 1 18:28:51 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   12, // methods
+      25,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,36 +32,46 @@ static const uint qt_meta_data_MainWindow[] = {
       12,   11,   11,   11, 0x05,
       24,   11,   11,   11, 0x05,
       36,   11,   11,   11, 0x05,
+      48,   11,   11,   11, 0x05,
+      76,   11,   11,   11, 0x05,
+      86,   11,   11,   11, 0x05,
+      96,   11,   11,   11, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      54,   48,   11,   11, 0x0a,
-      67,   11,   11,   11, 0x0a,
-      78,   11,   11,   11, 0x0a,
-      89,   11,   11,   11, 0x0a,
-     108,   11,   11,   11, 0x0a,
-     127,   11,   11,   11, 0x0a,
-     146,   11,   11,   11, 0x0a,
-     162,   11,   11,   11, 0x0a,
-     187,  178,   11,   11, 0x0a,
-     215,  209,   11,   11, 0x0a,
-     229,  209,   11,   11, 0x0a,
-     244,   11,   11,   11, 0x0a,
-     255,   11,   11,   11, 0x0a,
-     269,   11,   11,   11, 0x0a,
-     282,   11,   11,   11, 0x0a,
+     112,  106,   11,   11, 0x0a,
+     125,   11,   11,   11, 0x0a,
+     136,   11,   11,   11, 0x0a,
+     147,   11,   11,   11, 0x0a,
+     166,   11,   11,   11, 0x0a,
+     185,   11,   11,   11, 0x0a,
+     204,   11,   11,   11, 0x0a,
+     220,   11,   11,   11, 0x0a,
+     245,  236,   11,   11, 0x0a,
+     273,  267,   11,   11, 0x0a,
+     287,  267,   11,   11, 0x0a,
+     302,   11,   11,   11, 0x0a,
+     313,   11,   11,   11, 0x0a,
+     327,   11,   11,   11, 0x0a,
+     340,   11,   11,   11, 0x0a,
+     347,   11,   11,   11, 0x0a,
+     360,   11,   11,   11, 0x0a,
+     372,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0priority1()\0priority2()\0"
-    "priority3()\0index\0setPage(int)\0"
-    "goToMenu()\0goToLock()\0menuSetPriority1()\0"
-    "menuSetPriority2()\0menuSetPriority3()\0"
-    "checkPriority()\0updateTimeout()\0"
-    "songName\0pushSong(std::string)\0state\0"
-    "playSong(int)\0pauseSong(int)\0backSong()\0"
-    "forwardSong()\0transition()\0tick()\0"
+    "priority3()\0changeSongName(std::string)\0"
+    "notZero()\0hasPrev()\0hasNext()\0index\0"
+    "setPage(int)\0goToMenu()\0goToLock()\0"
+    "menuSetPriority1()\0menuSetPriority2()\0"
+    "menuSetPriority3()\0checkPriority()\0"
+    "updateTimeout()\0songName\0pushSong(std::string)\0"
+    "state\0playSong(int)\0pauseSong(int)\0"
+    "backSong()\0forwardSong()\0transition()\0"
+    "tick()\0checkNodes()\0checkPrev()\0"
+    "checkNext()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -92,24 +102,31 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: priority1(); break;
         case 1: priority2(); break;
         case 2: priority3(); break;
-        case 3: setPage((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 4: goToMenu(); break;
-        case 5: goToLock(); break;
-        case 6: menuSetPriority1(); break;
-        case 7: menuSetPriority2(); break;
-        case 8: menuSetPriority3(); break;
-        case 9: checkPriority(); break;
-        case 10: updateTimeout(); break;
-        case 11: pushSong((*reinterpret_cast< std::string(*)>(_a[1]))); break;
-        case 12: playSong((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 13: pauseSong((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 14: backSong(); break;
-        case 15: forwardSong(); break;
-        case 16: transition(); break;
-        case 17: tick(); break;
+        case 3: changeSongName((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 4: notZero(); break;
+        case 5: hasPrev(); break;
+        case 6: hasNext(); break;
+        case 7: setPage((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: goToMenu(); break;
+        case 9: goToLock(); break;
+        case 10: menuSetPriority1(); break;
+        case 11: menuSetPriority2(); break;
+        case 12: menuSetPriority3(); break;
+        case 13: checkPriority(); break;
+        case 14: updateTimeout(); break;
+        case 15: pushSong((*reinterpret_cast< std::string(*)>(_a[1]))); break;
+        case 16: playSong((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 17: pauseSong((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 18: backSong(); break;
+        case 19: forwardSong(); break;
+        case 20: transition(); break;
+        case 21: tick(); break;
+        case 22: checkNodes(); break;
+        case 23: checkPrev(); break;
+        case 24: checkNext(); break;
         default: ;
         }
-        _id -= 18;
+        _id -= 25;
     }
     return _id;
 }
@@ -130,5 +147,30 @@ void MainWindow::priority2()
 void MainWindow::priority3()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, 0);
+}
+
+// SIGNAL 3
+void MainWindow::changeSongName(std::string _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void MainWindow::notZero()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, 0);
+}
+
+// SIGNAL 5
+void MainWindow::hasPrev()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, 0);
+}
+
+// SIGNAL 6
+void MainWindow::hasNext()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QSignalMapper>
+#include <QLabel>
 
 #include "mainwindow.h"
 
@@ -23,9 +24,11 @@ public:
 	explicit LockMenu(MainWindow *parent);
 public slots:
 	void auth();
+	void updateName(std::string songName);
 private:
 	QVBoxLayout *layout;
 	int id;
+	QLabel *current_song;
 };
 
 #endif

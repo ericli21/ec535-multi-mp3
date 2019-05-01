@@ -21,7 +21,7 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	state = 0;
 	backButton = new QPushButton("Log out", this);
 	skipButton = new QPushButton("Forward", this);
-	my_Button = new QPushButton("Pause", this);	
+	my_Button = new QPushButton("Play", this);	
 	previousButton = new QPushButton("Back", this);
 	signalMapper = new QSignalMapper(this);
 	connect(signalMapper, SIGNAL(mapped(int)), parent, SLOT(setPage(int)));
@@ -29,8 +29,8 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	//layout = new QHBoxLayout();
 	layout = new QGridLayout();
 	std::cout << "Test8\n";
-	QLabel *message = new QLabel("Main Menu", this);
-	layout -> addWidget(message, 1, 0, 1, 1);
+	current_song = new QLabel("No song playing currently", this);
+	layout -> addWidget(current_song, 1, 0, 1, 1);
 	layout -> addWidget(previousButton, 0, 0, 1, 1);
 	layout -> addWidget(my_Button, 0, 1, 1, 1);
 	layout -> addWidget(skipButton, 0, 2, 1, 1);
@@ -38,9 +38,14 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	std::cout << "Test9\n";
 	setLayout(layout);
 	connect(backButton, SIGNAL(released()), parent, SLOT(goToLock()));
-	connect(my_Button, SIGNAL (released()), this, SLOT (handleButton()));
-	connect(previousButton, SIGNAL (released()), parent, SLOT (backSong()));
-	connect(skipButton, SIGNAL (released()), parent, SLOT (forwardSong()));
+	connect(my_Button, SIGNAL (released()), parent, SLOT(checkNodes()));
+
+	connect(previousButton, SIGNAL (released()), parent, SLOT (checkPrev()));
+	connect(skipButton, SIGNAL (released()), parent, SLOT (checkNext()));
+	
+	connect(this, SIGNAL(backSig()), parent, SLOT(backSong()));
+	connect(this, SIGNAL(forwardSig()), parent, SLOT(forwardSong()));
+
 	std::cout << "Test10\n";
 	connect(signalMapper, SIGNAL (mapped(int)), parent, SLOT (updateTimeout()));
 	connect(backButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
@@ -48,10 +53,18 @@ MainMenu::MainMenu(MainWindow *parent) : QWidget(parent) {
 	connect(previousButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 	connect(skipButton, SIGNAL (released()), parent, SLOT (updateTimeout()));
 
+	connect(parent, SIGNAL (notZero()), this, SLOT (handleButton()));
+	connect(parent, SIGNAL (hasPrev()), this, SLOT (handlePrevious()));
+	connect(parent, SIGNAL (hasNext()), this, SLOT (handleSkip()));	
+
 	connect(this, SIGNAL (play_to_pause(int)), parent, SLOT(pauseSong(int)));
 	connect(this, SIGNAL (pause_to_play(int)), parent, SLOT(playSong(int)));
 	//connect(skipButton, SIGNAL (released()), parent SLOT (checkPriority()));
 	//connect(previousButton, SIGNAL (released()), parent, SLOT (checkPriority()));
+
+	connect(parent, SIGNAL(changeSongName(std::string)), this, SLOT(updateName(std::string)));
+
+	//connect(parent, SIGNAL(noSong()), this, SLOT(correctState()));
 
 	nButtons = 0;
 }
@@ -89,21 +102,37 @@ void MainMenu::handleButton()
 }
 
 void MainMenu::handlePrevious() {
-	std::string nextSong = "blank";
-	std::string line = "ash speaker_interface.sh next ";
-	line += nextSong;
-	line += " &";
+	state = 1;
+	my_Button->setText("Pause");
+	emit backSig();
+	//std::string nextSong = "blank";
+	//std::string line = "ash speaker_interface.sh next ";
+	//line += nextSong;
+	//line += " &";
 	//line <<  "ash speaker_interface.sh next " << nextSong << " &"; 
 			
-	system(line.c_str());
+	//system(line.c_str());
 }
 
 void MainMenu::handleSkip() {
-	std::string previousSong = "blank1";
-	std::string line = "ash speaker_interface.sh next ";
-	line += previousSong;
-	line += " &";
+	state = 1;
+	my_Button->setText("Pause");
+	emit forwardSig();
+	//std::string previousSong = "blank1";
+	//std::string line = "ash speaker_interface.sh next ";
+	//line += previousSong;
+	//line += " &";
 	//line <<  "ash speaker_interface.sh next " << previousSong << " &"; 
 			
-	system(line.c_str());
+	//system(line.c_str());
 }
+
+void MainMenu::updateName(std::string songName) {
+	current_song->setText(QString::fromStdString(songName));
+}
+
+//void MainMenu::correctState() {
+//	state = 0;
+//	my_Button->setText("Play");
+//}
+

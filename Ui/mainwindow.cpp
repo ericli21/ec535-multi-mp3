@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	mainMenu -> addButton("Add song to playlist");
 	mainMenu -> addButton("Add a user");
 	timer = new QTimer();
-	timer -> start(15000);
+	timer -> start(30000);
 
 	songTimer = new QTimer();	
 
@@ -123,7 +123,7 @@ void MainWindow::checkPriority()
 	}
 }
 void MainWindow::updateTimeout() {
-	timer -> setInterval(15000);
+	timer -> setInterval(30000);
 }
 
 void MainWindow::pushSong(std::string songName) {
@@ -147,7 +147,9 @@ void MainWindow::pushSong(std::string songName) {
 	}
 	else if (mainqueue_info->num_nodes == 0) {
 		LL_AddSong(mainqueue_info, fileName);
+		std::cout << "Song added\n";
 		current_song_node = mainqueue_info->head;
+		std::cout << "Update current node\n";
 	}
 	else {
 		LL_AddSong(mainqueue_info, fileName);
@@ -160,6 +162,7 @@ void MainWindow::pushSong(std::string songName) {
 	//strcpy(command2, command.c_str());
 	//std::cout << command << "\n";
 	//system(command2);
+	std::cout << "Done1\n";
 }
 
 void MainWindow::playSong(int state) {
@@ -168,17 +171,22 @@ void MainWindow::playSong(int state) {
 	}
 	else {
 		std::string command;
-		command += "ash speaker_interface.sh play ";
-		command += current_song_node->song_name;
-		command += " &";
-		char * command2 = new char[command.length()+1];
-		strcpy(command2, command.c_str());
-		std::cout << command << "\n";
-		system(command2);
+		
 		if (state == 1) {
-			current_interval = current_song_node->info->length_seconds * 1000;
+			command += "ash speaker_interface.sh next ";
+			command += current_song_node->song_name;
+			command += " &";
+			char * command2 = new char[command.length()+1];
+			strcpy(command2, command.c_str());
+			std::cout << "play button activate: " << command << "\n";
+			system(command2);
+			current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
+			std::cout << current_interval << "= current interval\n";
+
+			//emit changeSongName(current_song_node->info->song_title);
+
 			songTimer -> setInterval(current_interval);
-			songTimer -> start();
+			//songTimer -> start(current_interval);
 			elapsedMSeconds = 0;
 			elapsedTimer -> start(1000);
 			//Shouldn't get here
@@ -186,7 +194,19 @@ void MainWindow::playSong(int state) {
 		} 
 		else {
 			//songTime -> setInterval(current_interval);
-			songTimer -> start();
+			command += "ash speaker_interface.sh play ";
+			command += current_song_node->song_name;
+			command += " &";
+			char * command2 = new char[command.length()+1];
+			strcpy(command2, command.c_str());
+			std::cout << "play button activate: " << command << "\n";
+			system(command2);
+
+			//emit changeSongName(current_song_node->info->song_title);
+
+			current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
+			std::cout << current_interval << "= current interval\n";
+			songTimer -> start(current_interval);
 			elapsedMSeconds = 0;
 			elapsedTimer -> start(1000);
 		}
@@ -207,7 +227,7 @@ void MainWindow::pauseSong(int state) {
 		system(command2);
 		
 		current_interval = current_interval - elapsedMSeconds;
-		
+		std::cout << current_interval << "= current interval\n";
 		songTimer -> stop();
 		songTimer -> setInterval(current_interval);
 	}
@@ -226,22 +246,23 @@ void MainWindow::forwardSong() {
 		
 		current_song_node = current_song_node->next;
 		std::string command;
-		command += "ash speaker_interface.sh play ";
+		command += "ash speaker_interface.sh next ";
 		command += current_song_node->song_name;
 		command += " &";
 		char * command2 = new char[command.length()+1];
 		strcpy(command2, command.c_str());
 		std::cout << command << "\n";
-
-		current_interval = current_song_node->info->length_seconds * 1000;
+		std::cout << current_interval << "= current interval\n";
+		current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
 		elapsedMSeconds = 0;
 		
 
 		system(command2);
 		
+		//emit changeSongName(current_song_node->info->song_title);
 
-		songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
-		songTimer -> start();
+		//songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
+		songTimer -> start(current_interval);
 		elapsedTimer -> start(1000);
 	}
 }
@@ -255,22 +276,24 @@ void MainWindow::backSong() {
 	if (current_song_node->prev != NULL) {
 		current_song_node = current_song_node->prev;
 		std::string command;
-		command += "ash speaker_interface.sh play ";
+		command += "ash speaker_interface.sh next ";
 		command += current_song_node->song_name;
 		command += " &";
 		char * command2 = new char[command.length()+1];
 		strcpy(command2, command.c_str());
 		std::cout << command << "\n";
-
-		current_interval = current_song_node->info->length_seconds * 1000;
+		std::cout << current_interval << "= current interval\n";
+		current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
 		elapsedMSeconds = 0;
 		
 
+
 		system(command2);
 		
+		//emit changeSongName(current_song_node->info->song_title);
 
-		songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
-		songTimer -> start();
+		//songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
+		songTimer -> start(current_interval);
 		elapsedTimer -> start(1000);
 	}
 }
@@ -279,26 +302,27 @@ void MainWindow::transition() {
 	if (current_song_node->next != NULL) {
 		current_song_node = current_song_node->next;
 		std::string command;
-		command += "ash speaker_interface.sh play ";
+		command += "ash speaker_interface.sh next ";
 		command += current_song_node->song_name;
 		command += " &";
 		char * command2 = new char[command.length()+1];
 		strcpy(command2, command.c_str());
-		std::cout << command << "\n";
-
-		current_interval = current_song_node->info->length_seconds * 1000;
+		std::cout << "transition active: " << command << "\n";
+		std::cout << current_interval << "= current interval\n";
+		current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
 		elapsedMSeconds = 0;
 		
 
 		system(command2);
 				
-
+		//emit changeSongName(current_song_node->info->song_title);
 		
-		songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
-		songTimer -> start();	
+		//songTimer -> setInterval(current_song_node->info->length_seconds * 1000);
+		songTimer -> start(current_interval);	
 		elapsedTimer -> start(1000);	
 	}
 	else {
+		emit changeSongName("No song playing currently");
 		std::cout << "No unplayed songs left in queue\n";
 	}
 }
@@ -306,9 +330,251 @@ void MainWindow::transition() {
 void MainWindow::tick() {
 	elapsedMSeconds++;
 	timer -> setInterval(1000);
-	std::cout << "counting..\n";
+	//std::cout << "counting..\n";
 }
 
+void MainWindow::checkNodes() {
+	if (mainqueue_info->num_nodes > 0) {
+		emit notZero();
+	}
+}
+
+void MainWindow::checkPrev() {
+	if (current_song_node->prev != NULL) {
+		emit hasPrev();
+	}
+}
+
+void MainWindow::checkNext() {
+	if (current_song_node->next != NULL) {
+		emit hasNext();
+	}
+}
+
+/*
+void remove_new_line(char *s) {
+    while (*s) {
+        if (*s == '\n') {
+            *s='\0';
+        }
+        s++;
+    }
+}
+
+
+//Adds a node to the end of the linked list
+void LL_AddSong(queue_info * node_queue, char * input_song_name)
+{
+	//Debug
+	printf("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+	printf("%s\n", input_song_name);
+
+	//File variables
+	FILE * fp;
+	char * line = NULL;
+	size_t len = 0;
+	ssize_t read;
+
+	//Delimeters
+	char * min;
+	char * sec;
+	char * temp;
+	char * delim1 = ":";
+	char * delim2 = " ";
+	char * delim3 = ": "; 
+
+	//Create and populate ID3 struct
+	ID3_info * song_info = (ID3_info*) malloc(sizeof(ID3_info));
+
+	//Call shell script
+	char buffer[128];
+
+	sprintf(buffer, "ash speaker_interface.sh info %s &", input_song_name);
+	printf("%s\n", buffer);
+	system(buffer);
+	sleep(3);
+
+	printf("after sleep\n");
+
+	//Open info file
+	fp = fopen("output.txt", "r");
+	if (fp == NULL)
+		exit(EXIT_FAILURE);
+
+	printf("after open\n");
+
+	//Create node
+	Node *node_intermediate = (Node*) malloc(sizeof(Node));
+
+	printf("node intermediate create\n");
+
+	//Parse information
+
+	while ((read = getline(&line, &len, fp)) != -1) {
+		printf("in while loop\n");
+		if(strstr(line, "Title:") != NULL){
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_title, line);
+		}
+
+		else if(strstr(line, "Artist:") != NULL){
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_artist, line);
+		}
+
+		else if(strstr(line, "Album:") != NULL){
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_album, line);
+		}
+
+		else if(strstr(line, "Year:") != NULL){
+			temp = strsep(&line, delim1);
+			int year = atoi(line);
+			song_info->year = year;
+		}
+
+		else if(strstr(line, "Genre:") != NULL){
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_genre, line);
+		}
+
+		else if(strstr(line, "Layer") != NULL){
+			break;
+		}	
+        	
+    	}
+
+
+	printf("after while loop\n");
+
+	//Get minutes and seconds
+	min = strsep(&line, delim1);
+	min = strsep(&line, delim1);
+	sec = strsep(&line, delim2);
+
+	int minutes = atoi(min);
+	int seconds = atoi(sec);
+
+	seconds = minutes * 60 + seconds;
+
+	fclose(fp);
+
+	printf("after close\n");
+
+	//Copy song name to node
+	strcpy(node_intermediate->song_name, input_song_name);
+
+	printf("after strcpy input song name \n");
+
+	//Set up new node
+	node_intermediate->next = NULL;
+	node_intermediate->prev = NULL;
+	node_intermediate->info = song_info;
+	node_intermediate->info->length_seconds = seconds;
+
+	printf("after new node setup\n");
+
+	//First song in queue
+	if (node_queue->head == NULL) {
+		node_queue->head = node_intermediate;
+		node_queue->end = node_intermediate;
+		node_queue->num_nodes += 1;
+		printf("before return 1\n");
+		return;
+	}
+
+	printf("after first song in queue check\n");
+
+	//Not the first song, add to the end of the queue
+	node_intermediate->prev = node_queue->end;
+	node_queue->end->next = node_intermediate;
+
+	//Make current node the end node
+	node_queue->end = node_intermediate;
+	node_queue->num_nodes += 1;
+	printf("before return 2\n");
+	return;
+
+}
+
+//Loop through and get the node based on the song name
+Node *getNode(Node * head_node, char *search_song_name) {
+	
+	//Start at the head of the list
+	Node *temp = head_node;
+
+	//Go through list
+	while (temp != NULL) {
+		if (strcmp(temp->song_name, search_song_name) == 0) {
+			return temp;
+		}
+		temp = temp->next;
+	}
+	return NULL;
+
+}
+
+//Get the next node in the list given a current node
+Node *getNextNode(Node * current_node) {
+
+	//Make sure there is a next song
+	if(current_node->next != NULL) {
+		return current_node->next;
+	}
+	return NULL;
+
+}
+
+//Get the next node in the list given a current node
+Node *getPrevNode(Node * current_node) {
+
+	//Make sure there is a next song
+	if(current_node->prev != NULL) {
+		return current_node->prev;
+	}
+	return NULL;
+
+}
+
+
+//Initialize queue
+void init_queue_info(queue_info * node_queue){
+
+	node_queue->num_nodes = 0;
+	node_queue->head = NULL;
+	node_queue->end = NULL;
+}
+
+
+//Delete the head node from the linked list
+void deleteNode(queue_info * node_queue){
+
+	//Temporary node
+	Node *temp = node_queue->head;
+
+	//Set up next node as head
+	node_queue->head->next->prev = NULL;
+	node_queue->head = node_queue->head->next;
+
+	//Free memory used by previous head node
+	free(temp);
+	node_queue->num_nodes -= 1;
+
+}
+*/
+
+void remove_new_line(char *s) {
+    while (*s) {
+        if (*s == '\n') {
+            *s='\0';
+        }
+        s++;
+    }
+}
 
 void LL_AddSong(queue_info * node_queue, char * input_song_name)
 {
@@ -320,6 +586,10 @@ void LL_AddSong(queue_info * node_queue, char * input_song_name)
 	char * line = NULL;
 	size_t len = 0;
 	ssize_t read;
+
+
+	char * temp;
+	char * delim3 = ": "; 
 
 	//Delimeters
 	char * min;
@@ -342,17 +612,94 @@ void LL_AddSong(queue_info * node_queue, char * input_song_name)
 	fp = fopen("output.txt", "r");
 	if (fp == NULL)
 		exit(EXIT_FAILURE);
+	
 
 	//Parse to our time line
+	
 	while ((read = getline(&line, &len, fp)) != -1) {
 		printf("%s\n", line);
-		if(strstr(line, "Layer") != NULL){
+		if(strstr(line, "Title:") != NULL){
+			printf("Line 1: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_title, line);
+			printf("Line 1b: %s\n", line);
+		}
+		else if(strstr(line, "Artist:") != NULL){
+			printf("Line 2: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_artist, line);
+			printf("Line 2b: %s\n", line);
+		}
+		else if(strstr(line, "Album:") != NULL){
+			printf("Line 3: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_album, line);
+			printf("Line 3b: %s\n", line);
+		}
+		else if(strstr(line, "Layer") != NULL){
 			printf("%s\n", line);
 			break;
 		}	
         	
     	}
 	
+
+	/*
+	while ((read = getline(&line, &len, fp)) != -1) {
+		if(strstr(line, "Title:") != NULL){
+			printf("Line 1: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_title, line);
+			printf("Line 1b: %s\n", line);
+		}
+
+		else if(strstr(line, "Artist:") != NULL){
+			printf("Line 2: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_artist, line);
+			printf("Line 2b: %s\n", line);
+		}
+
+		else if(strstr(line, "Album:") != NULL){
+			printf("Line 3: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_album, line);
+			printf("Line 3b: %s\n", line);
+		}
+
+		else if(strstr(line, "Year:") != NULL){
+			printf("Line 4: %s\n", line);
+			temp = strsep(&line, delim1);
+			int year = atoi(line);
+			song_info->year = year;
+			printf("Line 4b: %s\n", line);
+		}
+
+		else if(strstr(line, "Genre:") != NULL){
+			printf("Line 5: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_genre, line);
+			printf("Line 5b: %s\n", line);
+		}
+
+		else if(strstr(line, "Layer") != NULL){
+			printf("Line 6: %s\n", line);
+			break;
+		}	
+        	
+    	}
+
+	*/
+
+	printf("%s\n", line);
+
 	//Get minutes and seconds
 	min = strsep(&line, delim1);
 	min = strsep(&line, delim1);
@@ -361,22 +708,32 @@ void LL_AddSong(queue_info * node_queue, char * input_song_name)
 	printf("made it add %s %s\n", min, sec);
 
 	int minutes = atoi(min);
+	printf("min: %d\n", minutes);
 	int seconds = atoi(sec);
+	printf("sec: %d\n", seconds);
 
 	seconds = minutes * 60 + seconds;
+	printf("sec: %d\n", seconds);
 
 	fclose(fp);
-
+	printf("closed\n");
 	
 	//Create node
 	Node *node_intermediate = (Node*) malloc(sizeof(Node));
+	if (node_intermediate == NULL)
+		printf("Node intermediate == NULL\n");
+	printf("made node intermediate\n");
 
 	//Copy song name to node
 	strcpy(node_intermediate->song_name, input_song_name);
+	printf("copied\n");
 
 	//Next song is null
 	node_intermediate->next = NULL;
 	node_intermediate->prev = NULL;
+
+	printf("node intermediate nulls\n");
+
 	node_intermediate->info = song_info;
 	node_intermediate->info->length_seconds = seconds;
 	printf("%d\n", node_intermediate->info->length_seconds);
@@ -390,12 +747,21 @@ void LL_AddSong(queue_info * node_queue, char * input_song_name)
 		return;
 	}
 
+	printf("after if loop\n");
+
 	//Not the first song, add to end
 	node_intermediate->prev = node_queue->end;
+
+	printf("intermediate prev = node queue end\n");
+
 	node_queue->end->next = node_intermediate;
+
+	printf("queue end next = node intermediate\n");
 
 	//Make current node end
 	node_queue->end = node_intermediate;
+
+	printf("queue end = node intermediate\n");
 
 	node_queue->num_nodes += 1;
 

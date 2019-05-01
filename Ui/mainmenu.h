@@ -23,6 +23,8 @@ class MainMenu : public QWidget
 signals:
 	void play_to_pause(int);
 	void pause_to_play(int);
+	void backSig();
+	void forwardSig();
 public:
 	explicit MainMenu(MainWindow *parent);
 public slots:
@@ -30,6 +32,8 @@ public slots:
 	void handleButton();
 	void handleSkip();
 	void handlePrevious();
+	void updateName(std::string songName);
+	//void correctState();
 private:
 	QGridLayout *layout;
 	//QGridLayout *mainLayout;
@@ -41,6 +45,7 @@ private:
 	QPushButton *previousButton;
 	int state;
 	int priority;
+	QLabel *current_song;
 };
 
 #endif

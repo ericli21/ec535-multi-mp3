@@ -3,6 +3,7 @@
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include <QCoreApplication>
+#include <QLabel>
 
 #include "lockmenu.h"
 extern "C" {
@@ -17,7 +18,9 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	id = 1;
 	layout = new QVBoxLayout();
 	setLayout(layout);
+	current_song = new QLabel("No song playing currently", this);
 	QPushButton *button = new QPushButton("Log in via fingerprint", this);
+	layout -> addWidget(current_song);
 	layout -> addWidget(button);
 	connect(button, SIGNAL(released()), this, SLOT(auth()));
 	connect(this, SIGNAL(correct1()), parent, SLOT(menuSetPriority1()));
@@ -27,6 +30,9 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	connect(this, SIGNAL(correct1()), parent, SLOT(updateTimeout()));
 	connect(this, SIGNAL(correct2()), parent, SLOT(updateTimeout()));
 	connect(this, SIGNAL(correct3()), parent, SLOT(updateTimeout()));
+
+
+	connect(parent, SIGNAL(changeSongName(std::string)), this, SLOT(updateName(std::string)));
 	
 	//nButtons = 0;
 }
@@ -57,4 +63,8 @@ void LockMenu::auth() {
 			//Do nothing (shouldn't get here)
 		}
 	}
+}
+
+void LockMenu::updateName(std::string songName) {
+	current_song->setText(QString::fromStdString(songName));
 }

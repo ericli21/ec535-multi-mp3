@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainmenu.h'
 **
-** Created: Tue Apr 30 09:44:01 2019
+** Created: Wed May 1 18:28:50 2019
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainMenu[] = {
        2,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   12, // methods
+       9,   12, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,21 +31,25 @@ static const uint qt_meta_data_MainMenu[] = {
  // signals: signature, parameters, type, tag, flags
       10,    9,    9,    9, 0x05,
       29,    9,    9,    9, 0x05,
+      48,    9,    9,    9, 0x05,
+      58,    9,    9,    9, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      53,   48,    9,    9, 0x0a,
-      72,    9,    9,    9, 0x0a,
-      87,    9,    9,    9, 0x0a,
-     100,    9,    9,    9, 0x0a,
+      76,   71,    9,    9, 0x0a,
+      95,    9,    9,    9, 0x0a,
+     110,    9,    9,    9, 0x0a,
+     123,    9,    9,    9, 0x0a,
+     149,  140,    9,    9, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainMenu[] = {
     "MainMenu\0\0play_to_pause(int)\0"
-    "pause_to_play(int)\0name\0addButton(QString)\0"
-    "handleButton()\0handleSkip()\0"
-    "handlePrevious()\0"
+    "pause_to_play(int)\0backSig()\0forwardSig()\0"
+    "name\0addButton(QString)\0handleButton()\0"
+    "handleSkip()\0handlePrevious()\0songName\0"
+    "updateName(std::string)\0"
 };
 
 const QMetaObject MainMenu::staticMetaObject = {
@@ -75,13 +79,16 @@ int MainMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: play_to_pause((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: pause_to_play((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: addButton((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: handleButton(); break;
-        case 4: handleSkip(); break;
-        case 5: handlePrevious(); break;
+        case 2: backSig(); break;
+        case 3: forwardSig(); break;
+        case 4: addButton((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 5: handleButton(); break;
+        case 6: handleSkip(); break;
+        case 7: handlePrevious(); break;
+        case 8: updateName((*reinterpret_cast< std::string(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 6;
+        _id -= 9;
     }
     return _id;
 }
@@ -98,5 +105,17 @@ void MainMenu::pause_to_play(int _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void MainMenu::backSig()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
+}
+
+// SIGNAL 3
+void MainMenu::forwardSig()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, 0);
 }
 QT_END_MOC_NAMESPACE
