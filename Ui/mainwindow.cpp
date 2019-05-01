@@ -76,7 +76,6 @@ void MainWindow::setPage(int index)
 	}
 	//else if (index == 2 && priority > 2 && priority < 4) {
 	else if (index == 2 && priority > 1 && priority < 4) {
-	
 		layout -> setCurrentIndex(index);
 	}
 	else {

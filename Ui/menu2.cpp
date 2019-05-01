@@ -48,12 +48,12 @@ Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 void Menu2::addUser1() {
 	id_count++;
 	int device = scanner_open();
-	add_fingerprint(device, id_count, '1', 0);
+	add_fingerprint(device, id_count, 0x01, 0);
 }
 
 //Add a user with priority 2, increment number of users afterwards
 void Menu2::addUser2() {
 	id_count++;
 	int device = scanner_open();
-	add_fingerprint(device, id_count, '2', 0);
+	add_fingerprint(device, id_count, 0x02, 0);
 }
