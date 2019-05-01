@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QLabel>
 #include <iostream>
 
 #include "mainwindow.h"
@@ -22,10 +23,11 @@ private slots:
 	void addUser1();
 	void addUser2();	
 private:
-	//QLabel *message;
+	QLabel *message;
 	QPushButton *user1Button;
 	QPushButton *user2Button;
 	QPushButton *backButton;
+	
 };
 
 #endif

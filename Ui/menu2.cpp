@@ -20,7 +20,7 @@ Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 	backButton = new QPushButton("Go back", this);
 	QVBoxLayout *layout = new QVBoxLayout();
 	QHBoxLayout *layout2 = new QHBoxLayout();
-	QLabel *message = new QLabel("Add a user", this);
+	message = new QLabel("Add a user", this);
 	std::cout << "TestMenu2a\n";
 
 	//Add message and buttons to the layout
@@ -48,9 +48,10 @@ void Menu2::addUser1() {
 	//id_count++;
 	int device = scanner_open();
 	int id_count = get_user_number(device);
+	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	add_fingerprint(device, id_count + 1, 0x01, 0);
 	std::cout << "Added user" << id_count + 1 << "\n";
-	
+	message -> setText("Add a user");
 }
 
 //Add a user with priority 2, increment number of users afterwards
@@ -58,6 +59,8 @@ void Menu2::addUser2() {
 	//id_count++;
 	int device = scanner_open();
 	int id_count = get_user_number(device);
+	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	add_fingerprint(device, id_count + 1, 0x02, 0);
 	std::cout << "Added user" << id_count + 1 << "\n";
+	message -> setText("Add a user");
 }
