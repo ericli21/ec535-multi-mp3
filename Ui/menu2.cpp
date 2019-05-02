@@ -44,33 +44,26 @@ Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 	connect(user2Button, SIGNAL (released()), parent, SLOT (updateTimeout()));
 }
 
-//Add a user with priority 1, increment number of users afterwards
+//Add a user with priority 1, increment the user ID
 void Menu2::addUser1() {
-	//id_count++;
 	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	QCoreApplication::processEvents();
-	//sleep(1);
 	int device = scanner_open();
 	int id_count = get_user_number(device);
 	
 	add_fingerprint(device, id_count + 1, 0x01, 0);
-	//sleep(3)
 	std::cout << "Added user" << id_count + 1 << "\n";
-	//message -> setText("Add a user");
+	message -> setText("Add a user");
 }
 
-//Add a user with priority 2, increment number of users afterwards
+//Add a user with priority 2, increment the user ID
 void Menu2::addUser2() {
-	//id_count++;
 	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	QCoreApplication::processEvents();
-	//sleep(1);
 	int device = scanner_open();
 	int id_count = get_user_number(device);
 	
 	add_fingerprint(device, id_count + 1, 0x02, 0);
-	//sleep(3)
 	std::cout << "Added user" << id_count + 1 << "\n";
 	message -> setText("Add a user");
-	message -> setText("Add a user2");
 }
