@@ -7,6 +7,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <iostream>
+#include <QCoreApplication>
 
 #include "mainwindow.h"
 

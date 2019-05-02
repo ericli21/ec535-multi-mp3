@@ -4,6 +4,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <iostream>
+#include <QCoreApplication>
 	
 #include "menu2.h"
 #include "mainwindow.h"
@@ -47,6 +48,8 @@ Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 void Menu2::addUser1() {
 	//id_count++;
 	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
+	QCoreApplication::processEvents();
+	//sleep(1);
 	int device = scanner_open();
 	int id_count = get_user_number(device);
 	
@@ -60,6 +63,8 @@ void Menu2::addUser1() {
 void Menu2::addUser2() {
 	//id_count++;
 	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
+	QCoreApplication::processEvents();
+	//sleep(1);
 	int device = scanner_open();
 	int id_count = get_user_number(device);
 	
