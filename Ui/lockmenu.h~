@@ -13,7 +13,6 @@ namespace Ui {
 	class LockMenu;
 }
 
-//Lock menu class
 class LockMenu : public QWidget
 {
 	Q_OBJECT

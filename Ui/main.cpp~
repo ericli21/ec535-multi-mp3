@@ -19,10 +19,10 @@
 #include <unistd.h>
 #include <cstdlib>
 
-//Run QT
+//Class for a button
+
 int main(int argc, char * argv[]){
 
-	//System calls needed to initialize project
 	system("rm temp.txt");
 	system("touch temp.txt");
 	
@@ -43,14 +43,22 @@ int main(int argc, char * argv[]){
 	//Show objects
   	w.showFullScreen();
 
+	//char message[128];
+	
+	//Create a button
+	//MyButton window;
+
 	//Create a menu
 	MainWindow *window = new MainWindow();
 	window -> setWindowState(Qt::WindowFullScreen);
 	
-	//Show our window
+	
+
+  	//window.resize(250, 150);  
+  	//window.setWindowTitle("Play button test");
   	window -> show();
 
-	//Set up events
+		
 	QCoreApplication::processEvents();
 
 	

@@ -8,7 +8,6 @@ namespace Ui {
    class MyButton;
 }
  
-//Button class
 class MyButton : public QWidget
 {
    Q_OBJECT

@@ -17,7 +17,6 @@ namespace Ui {
 	class MainMenu;
 }
 
-//Main menu class
 class MainMenu : public QWidget
 {
 	Q_OBJECT
@@ -34,8 +33,10 @@ public slots:
 	void handleSkip();
 	void handlePrevious();
 	void updateName(std::string songName, std::string artistName, std::string albumName);
+	//void correctState();
 private:
 	QGridLayout *layout;
+	//QGridLayout *mainLayout;
 	QSignalMapper *signalMapper;
 	int nButtons;
 	QPushButton *my_Button;

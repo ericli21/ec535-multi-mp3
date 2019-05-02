@@ -29,7 +29,6 @@
 #define CMP_USER	0x0B
 #define CMP_ALL		0x0C
 
-//UART function declarations
 void add_fingerprint(int device, int user_id, char user_level, int scanNumber);
 void delete_user(int device, int user_id);
 int authenticate_user(int device, int user_id);

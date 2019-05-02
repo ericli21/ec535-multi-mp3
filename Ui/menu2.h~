@@ -15,7 +15,6 @@ namespace Ui {
 	class Menu2;
 }
 
-//Menu 2 class
 class Menu2 : public QWidget
 {
 	Q_OBJECT

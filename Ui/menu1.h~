@@ -18,7 +18,6 @@ namespace Ui {
 	class Menu1;
 }
 
-//Menu 1 class
 class Menu1 : public QWidget
 {
 	Q_OBJECT
@@ -30,6 +29,7 @@ private slots:
 	void slotTest(QListWidgetItem* song);
 	void confirmSong();
 private:
+	//QLabel *message;
 	QPushButton *addButton;
 	QPushButton *backButton;
 	int state;
