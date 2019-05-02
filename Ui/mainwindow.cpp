@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	timer = new QTimer();
 	timer -> start(30000);
 
-	songTimer = new QTimer();	
+	songTimer = new QTimer();
 
 	current_interval = 0;
 	elapsedMSeconds = 0;
@@ -67,6 +67,10 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 	connect(timer, SIGNAL(timeout()), this, SLOT(goToLock()));
 	connect(songTimer, SIGNAL(timeout()), this, SLOT(transition()));
 	std::cout << "Test6\n";
+	
+	lastSongPlayed = false;
+	
+
 }
 
 void MainWindow::setPage(int index)
@@ -277,7 +281,10 @@ void MainWindow::backSong() {
 		//Do nothing		
 		return;
 	}	
+	if (current_song_node->next != NULL) {
+		
 
+	}
 	if (current_song_node->prev != NULL) {
 		current_song_node = current_song_node->prev;
 		std::string command;
@@ -326,6 +333,7 @@ void MainWindow::transition() {
 		elapsedTimer -> start(1000);	
 	}
 	else {
+		lastSongPlayed = false;
 		emit changeSongName("No song playing currently", " ", " ");
 		std::cout << "No unplayed songs left in queue\n";
 	}

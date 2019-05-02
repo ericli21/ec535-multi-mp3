@@ -119,6 +119,7 @@ private:
 	QTimer *elapsedTimer;
 	Node *current_song_node;
 	int current_interval;
+	bool lastSongPlayed;
 };
 
 /*

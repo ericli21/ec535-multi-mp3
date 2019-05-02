@@ -50,8 +50,9 @@ void Menu2::addUser1() {
 	int id_count = get_user_number(device);
 	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	add_fingerprint(device, id_count + 1, 0x01, 0);
+	//sleep(3)
 	std::cout << "Added user" << id_count + 1 << "\n";
-	message -> setText("Add a user");
+	//message -> setText("Add a user");
 }
 
 //Add a user with priority 2, increment number of users afterwards
@@ -61,6 +62,8 @@ void Menu2::addUser2() {
 	int id_count = get_user_number(device);
 	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	add_fingerprint(device, id_count + 1, 0x02, 0);
+	//sleep(3)
 	std::cout << "Added user" << id_count + 1 << "\n";
 	message -> setText("Add a user");
+	message -> setText("Add a user2");
 }
