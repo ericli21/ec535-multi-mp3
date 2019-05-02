@@ -54,6 +54,7 @@ void Menu2::addUser1() {
 	add_fingerprint(device, id_count + 1, 0x01, 0);
 	std::cout << "Added user" << id_count + 1 << "\n";
 	message -> setText("Add a user");
+	QCoreApplication::processEvents();
 }
 
 //Add a user with priority 2, increment the user ID
@@ -66,4 +67,5 @@ void Menu2::addUser2() {
 	add_fingerprint(device, id_count + 1, 0x02, 0);
 	std::cout << "Added user" << id_count + 1 << "\n";
 	message -> setText("Add a user");
+	QCoreApplication::processEvents();
 }
