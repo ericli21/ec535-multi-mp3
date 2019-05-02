@@ -36,18 +36,23 @@ void add_fingerprint(int device, int user_id, char user_level, int scanNumber){
 	//Add FP 1
 	send_command(device, ADD_FP_1, UH, UL, user_level);
 	sleep(1);
+
+	printf("FP1\n");
 	check = get_response(device, response);
 	sleep(1);
 
 	//Add FP 2
 	send_command(device, ADD_FP_2, UH, UL, user_level);
 	sleep(1);
+
+	printf("FP2\n");
 	check = get_response(device, response);
 	sleep(1);
 
 	//Add FP 3
 	send_command(device, ADD_FP_3, UH, UL, user_level);
 	sleep(1);
+	printf("FP3\n");
 	check = get_response(device, response);
 
 }
@@ -154,6 +159,31 @@ int get_response(int device, char * response){
 		count = read(device, read_back, sizeof(read_back));
 	}
 
+	//Print response for dubugging purposes
+	for(i = 0; i < 8; i++){
+		//Do checksum
+		if(i > 0 && i < 6){
+			check_sum ^= read_back[i];
+		}
+		printf("%02x ", read_back[i]);	
+	}
+	printf("\n");
+
+	//Debug
+	if(read_back[0] != 0xF5){
+		printf("Header check failed\n");
+	}
+
+	if(read_back[7] != 0xF5){
+		printf("End check failed\n");
+	}
+
+	if(read_back[6] != check_sum){
+		printf("Check sum failed\n");
+		printf("Check sum: %02x\n", check_sum);
+		printf("Check sum 2: %02x\n", read_back[6]);
+	}
+
 	//Check if read was valid
 	if(read_back[0] == 0xF5 && read_back[7] == 0xF5 && check_sum == read_back[6]){
 		printf("Valid Read\n");
@@ -193,5 +223,4 @@ int scanner_open(void){
 
 	return device;
 }
-
 
