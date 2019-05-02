@@ -46,9 +46,10 @@ Menu2::Menu2(MainWindow *parent) : QWidget(parent)
 //Add a user with priority 1, increment number of users afterwards
 void Menu2::addUser1() {
 	//id_count++;
+	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	int device = scanner_open();
 	int id_count = get_user_number(device);
-	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
+	
 	add_fingerprint(device, id_count + 1, 0x01, 0);
 	//sleep(3)
 	std::cout << "Added user" << id_count + 1 << "\n";
@@ -58,9 +59,10 @@ void Menu2::addUser1() {
 //Add a user with priority 2, increment number of users afterwards
 void Menu2::addUser2() {
 	//id_count++;
+	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
 	int device = scanner_open();
 	int id_count = get_user_number(device);
-	message -> setText("Please keep your finger on the scanner for at least 3 seconds.");
+	
 	add_fingerprint(device, id_count + 1, 0x02, 0);
 	//sleep(3)
 	std::cout << "Added user" << id_count + 1 << "\n";
