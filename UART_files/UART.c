@@ -1,35 +1,5 @@
 #include "UART.h"
 
-
-int main(){
-
-	// open port for watch RF Communication
-	struct termios  config;
-	int wFile;
-	wFile = open(DEVICEPORT, O_RDWR | O_NOCTTY | O_NDELAY);
-	if(wFile == -1)
-	{
-		printf( "failed to open port\n" );
-		return -1;
-	}
-
-
-	bzero(&config, sizeof(config));
-	config.c_cflag = BAUDRATE | CS8 | CLOCAL | CREAD;
-	config.c_oflag = BAUDRATE | CS8 | CLOCAL | CREAD;
-	tcflush(wFile, TCIFLUSH);
-	tcsetattr(wFile,TCSANOW,&config);
-
-	char level = 0x03;
-
-	delete_user(wFile,0);
-
-	add_fingerprint(wFile, 1, level, 0);
-
-	int num_users = get_user_number(wFile);
-	printf("Num users: %d\n", num_users);
-
-}
 //Get the current number of users on the device, use when registering a new user
 int get_user_number(int device){
 

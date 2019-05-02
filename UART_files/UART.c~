@@ -22,6 +22,8 @@ int main(){
 
 	char level = 0x03;
 
+	delete_user(wFile,0);
+
 	add_fingerprint(wFile, 1, level, 0);
 
 	int num_users = get_user_number(wFile);
