@@ -681,6 +681,57 @@ void LL_AddSong(queue_info * node_queue, char * input_song_name)
     	}
 	
 
+	/*
+	while ((read = getline(&line, &len, fp)) != -1) {
+		if(strstr(line, "Title:") != NULL){
+			printf("Line 1: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_title, line);
+			printf("Line 1b: %s\n", line);
+		}
+
+		else if(strstr(line, "Artist:") != NULL){
+			printf("Line 2: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_artist, line);
+			printf("Line 2b: %s\n", line);
+		}
+
+		else if(strstr(line, "Album:") != NULL){
+			printf("Line 3: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_album, line);
+			printf("Line 3b: %s\n", line);
+		}
+
+		else if(strstr(line, "Year:") != NULL){
+			printf("Line 4: %s\n", line);
+			temp = strsep(&line, delim1);
+			int year = atoi(line);
+			song_info->year = year;
+			printf("Line 4b: %s\n", line);
+		}
+
+		else if(strstr(line, "Genre:") != NULL){
+			printf("Line 5: %s\n", line);
+			temp = strsep(&line, delim1);
+			remove_new_line(line);
+			strcpy(song_info->song_genre, line);
+			printf("Line 5b: %s\n", line);
+		}
+
+		else if(strstr(line, "Layer") != NULL){
+			printf("Line 6: %s\n", line);
+			break;
+		}	
+        	
+    	}
+
+	*/
+
 	printf("%s\n", line);
 
 	//Get minutes and seconds
