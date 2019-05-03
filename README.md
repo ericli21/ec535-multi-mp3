@@ -22,7 +22,7 @@ The fingerprint scanner is connected to the Gumstix board via the STUART (Standa
  
 ![alt text][connections]
 
-[logo]: https://github.com/ericli21/ec535-multi-mp3/blob/master/connections.jpg
+[connections]: https://github.com/ericli21/ec535-multi-mp3/blob/master/connections.jpg
 
 ### External Libraries
 
@@ -82,7 +82,7 @@ We will need to replace the Makefile’s INCPATH with the following (in Lab 5 tu
 
 ![alt text][exports]
 
-[logo]: https://github.com/ericli21/ec535-multi-mp3/blob/master/exports.jpg
+[exports]: https://github.com/ericli21/ec535-multi-mp3/blob/master/exports.jpg
 
 
 To make a fresh Ui binary executable:
