@@ -50,7 +50,6 @@ void Menu2::addUser1() {
 	int device = scanner_open();
 	int id_count = get_user_number(device);
 	add_fingerprint(device, id_count + 1, 0x01, 0);
-	//Once done, go back to original message
 	std::cout << "Added user" << id_count + 1 << "\n";
 	message -> setText("Add a user");
 	QCoreApplication::processEvents();
@@ -63,7 +62,6 @@ void Menu2::addUser2() {
 	int device = scanner_open();
 	int id_count = get_user_number(device);
 	add_fingerprint(device, id_count + 1, 0x02, 0);
-	//Once done, go back to original message
 	std::cout << "Added user" << id_count + 1 << "\n";
 	message -> setText("Add a user");
 	QCoreApplication::processEvents();

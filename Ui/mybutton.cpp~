@@ -2,7 +2,6 @@
  
 #include <QCoreApplication>
  
-//Button prototype, not used or called in Ui
 MyButton::MyButton(QWidget *parent)
 	: QWidget(parent)
 {

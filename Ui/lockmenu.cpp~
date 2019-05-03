@@ -35,20 +35,17 @@ LockMenu::LockMenu(MainWindow *parent) : QWidget(parent) {
 	layout -> addWidget(current_album);
 	layout -> addWidget(button);
 
-	//Signal handling: authenticate a user after pressing log in button
+	//Signal handling
 	connect(button, SIGNAL(released()), this, SLOT(auth()));
-
-	//Based on each button, go to the main menu with the correct priority
 	connect(this, SIGNAL(correct1()), parent, SLOT(menuSetPriority1()));
 	connect(this, SIGNAL(correct2()), parent, SLOT(menuSetPriority2()));
 	connect(this, SIGNAL(correct3()), parent, SLOT(menuSetPriority3()));
 
-	//Update timeout timer
 	connect(this, SIGNAL(correct1()), parent, SLOT(updateTimeout()));
 	connect(this, SIGNAL(correct2()), parent, SLOT(updateTimeout()));
 	connect(this, SIGNAL(correct3()), parent, SLOT(updateTimeout()));
 
-	//If there is a song change in MainWindow, detect the signal and update the song information display
+
 	connect(parent, SIGNAL(changeSongName(std::string,std::string,std::string)), this, SLOT(updateName(std::string,std::string,std::string)));
 }
 

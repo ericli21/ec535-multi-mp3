@@ -63,7 +63,7 @@ void Menu1::slotTest(QListWidgetItem* song) {
 	selected = qPrintable(song->text());
 }
 
-//Confirm that the song is not just a empty string
+//Confirm that the song is just a empty string
 void Menu1::confirmSong() {
 	if (!selected.empty()) {
 		std::cout << selected << "added to queue.\n";

@@ -122,7 +122,7 @@ void MainMenu::handleSkip() {
 	emit forwardSig();
 }
 
-//Update the song name, artist name, and album name in the display
+
 void MainMenu::updateName(std::string songName, std::string artistName, std::string albumName) {
 	current_song->setText(QString::fromStdString(songName));
 	current_artist->setText(QString::fromStdString(artistName));
