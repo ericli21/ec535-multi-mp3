@@ -19,8 +19,10 @@ The fingerprint scanner is connected to the Gumstix board via the STUART (Standa
 |GND|GND|2|STUART, 1|
 |RXD|ST_TXD|3|STUART,  2|
 |TXD|ST_RXD|4|STUART, 4|
+ 
+![alt text][connections]
 
-
+[logo]: connections source url
 
 ### External Libraries
 
@@ -78,7 +80,9 @@ Similar to Lab 5, the QT application is created using dependencies from the EC53
 
 We will need to replace the Makefile’s INCPATH with the following (in Lab 5 tutorial):
 
-(image here)
+![alt text][exports]
+
+[exports]: connections source url
 
 To make a fresh Ui binary executable:
 > make clean
