@@ -19,6 +19,8 @@ The fingerprint scanner is connected to the Gumstix board via the STUART (Standa
 |GND|GND|2|STUART, 1|
 |RXD|ST_TXD|3|STUART,  2|
 |TXD|ST_RXD|4|STUART, 4|
+
+Finally, the bluetooth antenna needs to be connected to the Gumstix. In order to do this connect the antenna to Conn 3. See the Figure below.
  
 ![alt text][connections]
 
