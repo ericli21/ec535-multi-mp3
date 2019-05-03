@@ -82,7 +82,7 @@ We will need to replace the Makefile’s INCPATH with the following (in Lab 5 tu
 
 ![alt text][exports]
 
-[exports]: https://github.com/ericli21/ec535-multi-mp3/blob/master/exports.jpg
+[exports]: https://github.com/ericli21/ec535-multi-mp3/blob/master/exports.JPG
 
 
 To make a fresh Ui binary executable:
