@@ -48,16 +48,23 @@ The following packages also needed to be installed because they were dependencie
 The libraries were installed onto the SD card on the Gumstix through the serial connection with the host computer.
 
 > root@gumstix-custom-verdex:~$ cd /media/card
+
 > root@gumstix-custom-verdex:~$ mkdir packages
+
 > root@gumstix-custom-verdex:~$ cd packages
+
 > root@gumstix-custom-verdex:~$ rz -bZ
+
 > root@gumstix-custom-verdex:~$ (Ctrl + A + Z), (S + Enter)
+
 > root@gumstix-custom-verdex:~$ (navigate to package location on host)
+
 > root@gumstix-custom-verdex:~$ (select one or many libraries with spacebar + Enter)
 
 Once installed, each library was installed using the ipkg install command. Install the dependencies before installing madplay and aplay.
 
 > root@gumstix-custom-verdex:~$ cd /media/card/packages
+
 > root@gumstix-custom-verdex:~$ ipkg install [package file name]
 
 
@@ -66,6 +73,7 @@ Once installed, each library was installed using the ipkg install command. Insta
 Similar to Lab 5, the QT application is created using dependencies from the EC535 source folder. Please include all code modules relating to the Qt user interface in the same directory (named “Ui”) so that they all are added to the qmake project automatically. 
 
 > qmake -project
+
 > qmake
 
 We will need to replace the Makefile’s INCPATH with the following (in Lab 5 tutorial):
@@ -74,6 +82,7 @@ We will need to replace the Makefile’s INCPATH with the following (in Lab 5 tu
 
 To make a fresh Ui binary executable:
 > make clean
+
 > make
 
 ### Songs
@@ -81,11 +90,17 @@ To make a fresh Ui binary executable:
 Transfering songs to the SD card was done using the serial connection between the Gumstix and the host computer. The average song takes about 8 minutes to download.
 
 > root@gumstix-custom-verdex:~$ cd /media/card
+
 > root@gumstix-custom-verdex:~$ mkdir songs
+
 > root@gumstix-custom-verdex:~$ cd songs
+
 > root@gumstix-custom-verdex:~$ rz -bZ
+
 > root@gumstix-custom-verdex:~$ (Ctrl + A + Z), (S + Enter)
+
 > root@gumstix-custom-verdex:~$ (navigate to song location on host)
+
 > root@gumstix-custom-verdex:~$ (select one or many songs with spacebar + Enter)
 
 Due to the way we process songs within this project, the song file names had to be edited to remove non-standard ASCII characters and spaces.  These characters and spaces are fine within the ID3 tags, and do not need to be edited there.
@@ -97,12 +112,19 @@ Due to the way we process songs within this project, the song file names had to 
 Within the minicom terminal, run the following commands to set up the variables that will be needed to run our QT variables:
 
 > export QWS_MOUSE_PROTO='tslib:/dev/input/touchscreen0'
+
 > export TSLIB_CONFFILE=/etc/ts.conf
+
 > export TSLIB_PLUGINDIR=/usr/lib
+
 > export TSLIB_TSDEVICE=/dev/input/event0
+
 > export TSLIB_FBDEVICE=/dev/fb0
+
 > export TSLIB_CONSOLEDEVICE=/dev/tty
+
 > export QT_QWS_FONTDIR=/media/card/lib/fonts
+
 > export TSLIB_PLUGINDIR=/usr/lib/ts
     
 Run “ts_calibrate” after this, noting that sometimes the calibration screen does not show.  Just hit Ctrl+C and run calibrate again.
