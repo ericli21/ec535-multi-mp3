@@ -222,7 +222,7 @@ void MainWindow::playSong(int state) {
 
 			//Update the current_interval and song timer with the remaining duration with a 2 second buffer, and update song information to display
 			emit changeSongName(current_song_node->info->song_title, current_song_node->info->song_artist, current_song_node->info->song_album);
-			//temp: current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
+			current_interval = (current_song_node->info->length_seconds * 1000) + 2000;
 			songTimer -> start(current_interval);
 
 			//Reset elapsed timer counter and clock
