@@ -147,7 +147,11 @@ We then turned on our bluetooth speaker so that we could determine the MAC addre
 
 The output of running this command is the devices that were detected while running the scan and their MAC addresses. We found the MAC address associated with our bluetooth speaker and edited the /etc/asound.conf so that it contained the following: 
 
-(input here)
+> pcm.D80_speaker {
+>   type bluetooth
+>   device "00:02:3C:36:20:75"
+> }
+
 
 After taking these steps, we verified that we were able to play song by running the following command on the command line:
 
