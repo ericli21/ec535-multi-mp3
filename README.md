@@ -152,3 +152,9 @@ The output of running this command is the devices that were detected while runni
 After taking these steps, we verified that we were able to play song by running the following command on the command line:
 
 > root@gumstix-custom-verdex:~$ madplay 10.mp3 -r 44100 --output=wave:- | aplay -D D80_Speaker
+
+### Project Use
+
+To use our project, follow the setup procedure above, and enter the following into the Gumstix terminal to start QT execution:
+
+> ./Ui -qws
