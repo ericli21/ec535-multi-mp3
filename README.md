@@ -80,11 +80,31 @@ Similar to Lab 5, the QT application is created using dependencies from the EC53
 
 We will need to replace the Makefile’s INCPATH with the following (in Lab 5 tutorial):
 
-![alt text][exports]
+> INCPATH = -I/ad/eng/courses/ec/ec535/gumstix/oe/cross/arm-angstrom-linux-gnueabi/include/c++ \
 
-[exports]: connections source url
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/cross/arm-angstrom-linux-gnueabi/include/c++/arm-angstrom-linux-gnueabi \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/cross/arm-angstrom-linux-gnueabi/include/c++/backward \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/cross/arm-angstrom-linux-gnueabi/include/c++/bits \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/cross/arm-angstrom-linux-gnueabi/include/c++/debug \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/cross/arm-angstrom-linux-gnueabi/include/c++/ext \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/qt/include/QtCore \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/qt/include/QtGui \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/qt/include/QtNetwork \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/qt/include \
+
+>               -I/ad/eng/courses/ec/ec535/gumstix/oe/qt/mkspecs/qws/linux-arm-g++ -I. -I. -I. -I.
+
 
 To make a fresh Ui binary executable:
+
 > make clean
 
 > make
